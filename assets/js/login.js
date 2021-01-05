@@ -41,27 +41,29 @@ $(document).ready(function () {
 
     $(document).on('click', '.user_register', function () {
         
-        //$('.load-overlay').show();
-        //$('#modal-placeholder').html('');
+        $('.load-overlay').show();
+        $('#modal-placeholder').html('');
         var actionUrl = $(this).attr('data-url');
-        alert(actionUrl);
+        //alert(actionUrl);
         $('#modal-placeholder').load(actionUrl, function () {
-            //$('.load-overlay').hide();
+            $('.load-overlay').hide();
             $("#myModalHorizontal").modal();
             //$('.update-worker-error').remove();
     
-            /* $("#update-worker-form").validate({
+             $("#user_registration_form").validate({
                 submitHandler: function (form) {
-                    var btn = $('#update-worker-form .btn_submit').loading('set');
+                    //alert($("#user_registration_form").attr('data-url'));
+                    //var btn = $('#user_registration_btn .btn_submit').loading('set');
                     $.ajax({
-                        url: $(form).attr('data-url'),
+                        url: $("#user_registration_form").attr('data-url'),
                         dataType: "json",
                         type: "post",
-                        data: new FormData($('#update-worker-form')[0]),
+                        data: new FormData($('#user_registration_form')[0]),
                         contentType: false,
                         cache: false,
                         processData: false,
                         success: function (d) {
+                            //alert(d);return false;
                             if (d.status == 'success') {
                                 window.location.reload();
                             } else {
@@ -71,15 +73,20 @@ $(document).ready(function () {
                                         err += v + '<br/>';
                                     });
                                 });
-                                $('#update-worker-form .btn_submit').before('<label class="error update-worker-error">' + err + '</label>');
+                                //$('#update-worker-form .btn_submit').before('<label class="error update-worker-error">' + err + '</label>');
                             }
                         }
                     }).always(function () {
-                        btn.loading('reset');
+                        //btn.loading('reset');
                     });
                 }
-            }); */
+            }); 
         });
     });
 
 });
+
+
+$(document).on('click', '.test_modal', function() {
+    $("#myModal").modal('show');
+})

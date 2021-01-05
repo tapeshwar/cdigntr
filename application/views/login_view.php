@@ -10,7 +10,7 @@
    <script src="<?php echo base_url('assets/js/jquery-validation/lib/jquery.js')?>"></script>
   <script src="<?=base_url('assets/js/jquery-validation/dist/jquery.validate.js')?>"></script>
   <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
-  
+  <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css"> -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="<?=base_url('assets/js/login.js')?>"></script>
@@ -80,7 +80,7 @@
 
 
 
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+  <button type="button" class="btn btn-info btn-lg test_modal" data-toggle="modal">Open Modal</button>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -102,6 +102,15 @@
       
     </div>
   </div>
+
+
+
+
+
+  <div id="modal-placeholder"></div>
+  <p id="overlay" class="text-center load-overlay" >
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </p>
   
 </body>
 

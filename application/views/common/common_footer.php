@@ -14,6 +14,9 @@
 
 
   <div id="modal-placeholder"></div>
+  <p id="overlay" class="text-center load-overlay" >
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </p>
 
 
   

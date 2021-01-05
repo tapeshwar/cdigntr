@@ -6,6 +6,7 @@ class Login extends CORE_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library('Util');
+		$this->load->model('user_model');
 		//$this->data['js'] = ['tushar.js'];
     }
 
@@ -16,7 +17,7 @@ class Login extends CORE_Controller {
 	}
 
 	public function user_login(){
-		$this->load->model('user_model');
+		
 		$post = $this->input->post();
 		
 		$ret = $this->user_model->user_login($post);
@@ -68,12 +69,30 @@ class Login extends CORE_Controller {
 
 	public function user_register(){
 
+		
 		$data = [
-			'title' => 'User Register',
-			'heading' => 'User Register',
+			'title' => 'User Registation',
+			'heading' => 'User Registation',
 		];
 
 		$this->load->view('login/user_register_modal',array_merge($data,$data));
+
+	}
+
+	public function user_registration(){
+
+		 if(!empty($this->input->post())){
+			$post = $this->input->post();
+
+			$res = $this->user_model->user_registration($post);
+
+			$return['status'] = 'success';
+			$return['msg'] = 'Registration successfully saved..';
+			$this->session->set_flashdata('success', 'Registration successfully saved ');
+			echo json_encode($return);
+			exit();
+		}
+
 
 	}
 }
