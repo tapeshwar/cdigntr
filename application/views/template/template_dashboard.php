@@ -26,10 +26,9 @@ $method = $this->router->fetch_method();
 
                 <!-- Default box -->
                 <div class="box">
-                        <div class="box-header with-border">
-                                <!-- <h3 class="box-title">Title</h3> -->
-
-                        </div>
+                        <!-- <div class="box-header with-border">
+                                <h3 class="box-title">Title</h3>
+                        </div> -->
                         <div class="box-body">
 
 

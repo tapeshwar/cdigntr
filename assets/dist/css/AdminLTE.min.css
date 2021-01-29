@@ -5346,6 +5346,15 @@
  #purple .slider-selection {
      background: #932ab6;
  }
+ .panel {
+    border-radius: 2px;
+ }
+ .panel-heading {
+    padding: 7.5px 7.5px;
+ }
+ .panel-default>.panel-heading {
+    background-color: #f1f1f1;
+ }
  @media print {
      .no-print,
      .main-sidebar,
