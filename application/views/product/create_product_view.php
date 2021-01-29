@@ -1,167 +1,89 @@
 <div class="row">
 
-  <div class="col-md-12" style="margin-bottom: 10px;">
-    <a href="<?= base_url('product/index') ?>" class="btn btn-sm btn-flat btn-primary pull-right">Product List</a>
-  </div>
-
-
-    <div class="col-md-4">
-
-      <form id="create_product_form" action="<?= base_url('product/create_product') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
-
-
-        <div class="form-group">
-          <label class="col-md-12 control-label" for="product_id">PRODUCT ID</label>
-          <div class="col-md-12">
-            <input id="product_id" name="product_id" placeholder="PRODUCT ID" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-12 control-label" for="product_name">PRODUCT NAME</label>
-          <div class="col-md-12">
-            <input id="product_name" name="name" placeholder="PRODUCT NAME" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Text input-->
-
-        <div class="form-group">
-          <label class="col-md-12 control-label" for="product_description">PRODUCT DESCRIPTION</label>
-          <div class="col-md-12">
-            <textarea class="form-control" id="product_description" name="description"></textarea>
-          </div>
-        </div>
-
-
-        <!-- Select Basic -->
-        <div class="form-group">
-          <label class="col-md-12 control-label" for="product_categorie">PRODUCT CATEGORY</label>
-          <div class="col-md-12">
-            <select id="product_categorie" name="category" class="form-control">
-              <option value="">SELECT</option>
-              <option value="1">Food</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-12 control-label" for="available_quantity">AVAILABLE QUANTITY</label>
-          <div class="col-md-12">
-            <input id="available_quantity" name="quantity" placeholder="AVAILABLE QUANTITY" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-
-
-        <div class="form-group">
-          <label class="col-md-12 control-label" for="percentage_discount">PERCENTAGE DISCOUNT</label>
-          <div class="col-md-12">
-            <input id="percentage_discount" name="discount" placeholder="PERCENTAGE DISCOUNT" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Text input-->
-       
-
-
-
+    <div class="col-md-12" style="margin-bottom: 10px;">
+        <a href="<?= base_url('product/index') ?>" class="btn btn-sm btn-flat btn-primary pull-right">Product List</a>
     </div>
-
-
-
-
-
-    <div class="col-md-4">
-
-    <div class="form-group">
-          <label class="col-md-12 control-label" for="stock_alert">STOCK ALERT</label>
-          <div class="col-md-12">
-            <input id="stock_alert" name="stock" placeholder="STOCK ALERT" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-12 control-label" for="online_date">ONLINE DATE</label>
-        <div class="col-md-12">
-          <input id="online_date" name="online_date" placeholder="ONLINE DATE" class="form-control input-md" required="" type="text">
-
-        </div>
-      </div>
-
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-12 control-label" for="author">AUTHOR</label>
-        <div class="col-md-12">
-          <input id="author" name="author" placeholder="AUTHOR" class="form-control input-md" required="" type="text">
-
-        </div>
-      </div>
-
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-12 control-label" for="enable_display">ENABLE DISPLAY</label>
-        <div class="col-md-12">
-          <input id="enable_display" name="enable" placeholder="ENABLE DISPLAY" class="form-control input-md" required="" type="text">
-
-        </div>
-      </div>
-
-
-
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-12 control-label" for="approuved_by">APPROUVED BY</label>
-        <div class="col-md-12">
-          <input id="approuved_by" name="approved_by" placeholder="APPROUVED BY" class="form-control input-md" required="" type="text">
-        </div>
-      </div>
-
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-12 control-label" for="comment">COMMENTS</label>
-        <div class="col-md-12">
-          <textarea id="comment" name="comments" placeholder="COMMENT" class="form-control input-md" required="" type="text"></textarea>
-
-        </div>
-      </div>
-
-
-
-    </div>
-
-
-
-
-
-    <div class="col-md-4">
-      <!-- File Button -->
-      <div class="form-group">
-        <label class="col-md-12 control-label" for="filebutton">IMAGE: </label>
-        <div class="col-md-12">
-          <input id="filebutton" name="product_img" class="form-control view_photo" type="file">
-        </div>
-      </div>
-
-    </div>
-
 
 
     <div class="col-md-12">
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-primary btn-sm product_create_btn">Submit</button>
-      </div>
+
+        <form id="create_product_form" action="<?= base_url('product/create_product') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+
+            <div class="col-sm-4">
+                <label class="control-label">Product Code:</label>
+                <input type="text" value="" name="product_id" class="form-control" placeholder="Product Code" required>
+            </div>
+
+
+            <div class="col-sm-4">
+                <label class="control-label">Product Name:</label>
+                <input type="text" value="" name="name" class="form-control" placeholder="Product Name" required>
+            </div>
+            <div class="col-sm-4">
+                <label class="control-label">Product Category:</label>
+                <input type="text" value="" name="category" class="form-control" placeholder="Product Category" required>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="col-sm-4">
+                <label class="control-label">Quantity:</label>
+                <input type="text" value="" name="quantity" class="form-control" placeholder="Quantity" required>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="control-label">Product Description:</label>
+                <input type="text" value="" name="description" class="form-control" placeholder="Product Description" required>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="control-label">Discount:</label>
+                <input type="text" value="" name="discount" class="form-control" placeholder="Discount" required>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="control-label">Stock:</label>
+                <input type="text" value="" name="stock" class="form-control" placeholder="Stock" required>
+            </div>
+            <div class="col-sm-4">
+                <label class="control-label">Online Date:</label>
+                <input type="text" value="" name="online_date" class="form-control" placeholder="Online Date" required>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="control-label">Enable:</label>
+                <input type="text" value="" name="enable" class="form-control" placeholder="Enable" required>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="control-label">Author:</label>
+                <input type="text" value="" name="author" class="form-control" placeholder="Author" required>
+            </div>
+            <div class="col-sm-4">
+                <label class="control-label">Approved By:</label>
+                <input type="text" value="" name="approved_by" class="form-control" placeholder="Approved By" required>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="control-label">Comments:</label>
+                <input type="text" value="" name="comments" class="form-control" placeholder="Comments" required>
+            </div>
+
+            <div class="col-sm-4">
+                <label class="control-label">Product Image:</label>
+                <input type="file" value="" name="product_img" class="form-control" placeholder="Product Image">
+            </div>
 
     </div>
 
+
+    <div class="col-md-12 mt20">
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn-sm btn-flat product_create_btn">Submit</button>
+        </div>
+    </div>
     </form>
- 
+
+
+
 </div>

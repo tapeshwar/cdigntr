@@ -18,7 +18,7 @@
           </div>
 
 
-          <div class="col-sm-4 text-right mb20 mr0">
+          <div class="col-sm-4 text-right mt30 mr0">
             <label class="control-label">&nbsp;</label>
             <button type="submit" class="btn btn-flat btn-sm btn-primary">SEARCH</button>
             <a href="<?=base_url('product/index')?>" class="btn btn-flat btn-sm btn-primary">RESET</a>
@@ -57,12 +57,12 @@
               <tr>
                 <td><?= $i + $page ?></td>
                 <td><?= $product['product_id'] ?></td>
-                <td><?= $product['name'] ?></td>
+                <td><?= $product['name'] ?>fafasdf dfsadf dsas sdfsd dfasda afdadad </td>
                 <td><?= $product['description'] ?></td>
                 <td><?= $product['category'] ?></td>
                 <td>
-                  <a href="<?= base_url('product/create_product/' . $product['id']) ?>" data-url="" class="btn btn-primary btn-xs">Edit</a>
-                  <a href="javascript:void()" data-url="<?= base_url('product/edit_product') ?>" class="btn btn-danger btn-xs">Delete</a>
+                  <a href="<?= base_url('product/create_product/' . $product['id']) ?>" class="btn btn-primary btn-xs btn-flat"><i class="fa fa-pencil" title="Edit"></i></a>
+                  <a href="javascript:void()" data-url="<?= base_url('product/edit_product') ?>" class="btn btn-danger btn-xs btn-flat" title="Delete"><i class="fa fa-trash"></i></a>
 
                 </td>
               </tr>
