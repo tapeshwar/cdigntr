@@ -14,7 +14,7 @@ $(document).ready(function () {
             //var btn = $('#user_login_form').loading('set');
             $.ajax({
                 type: "POST",
-                url: $('#user_login_form').attr('data-url'),
+                url: $('#user_login_form').attr('action'),
                 data: new FormData($('#user_login_form')[0]),
                 contentType: false,
 				cache: false,
@@ -23,14 +23,16 @@ $(document).ready(function () {
                 success: function (r) {
                     //alert(r.status);
                     if(r.status=='success'){
+                        $('#login_error').html('<span style="color:green">'+r.msg+'</span>');
                         window.location.href=r.url;
                     }else{
-                        console.log(r.status);
+                        $('#login_error').html('<span style="color:red">'+r.msg+'</span>');
+                        //console.log(r.status);
                     }
                     //return false;
                 }
             }).always(function () {
-                btn.loading('reset');
+                /* btn.loading('reset'); */
             });
             return false;
 

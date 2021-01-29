@@ -6,6 +6,7 @@ class CORE_Controller extends CI_Controller{
 
         //$this->data['js'] = ['sdas','dsaf','dasf'];
         //$this->data['css'] = ['sdaf','dsaf','dafas'];
+	
         
     }
 

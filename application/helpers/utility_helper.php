@@ -18,8 +18,13 @@ function jsList($file_list){
         }
         return $jlist;
     }
+}
 
-
+function pr($data){
+    if(!empty($data)){
+        echo '<pre>';
+        print_r($data);
+    }
 }
 
 ?>

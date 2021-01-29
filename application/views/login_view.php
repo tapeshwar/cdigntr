@@ -1,117 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Majestic Admin</title>
-
-   <script src="<?php echo base_url('assets/js/jquery-validation/lib/jquery.js')?>"></script>
-  <script src="<?=base_url('assets/js/jquery-validation/dist/jquery.validate.js')?>"></script>
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
-  <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="<?=base_url('assets/js/login.js')?>"></script>
-  <!-- plugins:css -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Log in</title>
  
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  
-
-  
-  <!-- endinject -->
-  <link rel="shortcut icon" href="<?=base_url('assets/images/favicon.png')?>" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="<?=base_url('assets/bootstrap/dist/css/bootstrap.min.css')?>">
+  <link rel="stylesheet" href="<?=base_url('assets/font-awesome/css/font-awesome.min.css')?>">
+  <link rel="stylesheet" href="<?=base_url('assets/Ionicons/css/ionicons.min.css')?>">
+  <link rel="stylesheet" href="<?=base_url('assets/dist/css/AdminLTE.min.css')?>">
+  <link rel="stylesheet" href="<?=base_url('assets/plugins/iCheck/square/blue.css')?>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-
-<body>
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth px-0">
-        <div class="row w-100 mx-0">
-          <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
-                <img src="<?=base_url('assets/images/logo.svg')?>" alt="logo">
-              </div>
-             
-              <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3" method="post" id="user_login_form" data-url="<?=base_url('login/user_login')?>">
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-md" name="username"  placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-md" name="password"  placeholder="Password" required>
-                </div>
-                <div class="mt-3">
-                  <button type="submit" class="btn btn-primary user_login_btn">SIGN IN</button>
-                </div>
-                </form>
-
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      Keep me signed in
-                    </label>
-                  </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
-                </div>
-                <div class="mb-2">
-                  <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                    <i class="mdi mdi-facebook mr-2"></i>Connect using facebook
-                  </button>
-                </div>
-                <div class="text-center mt-4 font-weight-light">
-                  Don't have an account? <a href="javascript:void(0)" data-url="<?=base_url('login/user_register')?>" class="text-primary user_register">Create</a>
-                </div>
-             
-            </div>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Admin Panel</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign In</p>
+    <span id="login_error"></span>
+    <form id="user_login_form" action="<?=base_url('home/user_login')?>" method="post">
+      <div class="form-group has-feedback">
+        <input text="text" name="username" class="form-control" placeholder="Username/Email" required>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
           </div>
         </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat user_login_btn">Sign In</button>
+        </div>
+        <!-- /.col -->
       </div>
-      <!-- content-wrapper ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
+    </form>
+
+    <!-- <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+    </div> -->
+    <!-- /.social-auth-links -->
+
+    <!-- <a href="#">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a> -->
+
   </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
+<script src="<?=base_url('assets/jquery/dist/jquery.min.js')?>"></script>
+<script src="<?=base_url('assets/bootstrap/dist/js/bootstrap.min.js')?>"></script>
+<script src="<?=base_url('assets/jquery-validation/dist/jquery.validate.js')?>"></script>
+<script src="<?=base_url('assets/plugins/iCheck/icheck.min.js')?>"></script>
+<script src="<?=base_url('assets/js/login.js')?>"></script>
 
-
-  <button type="button" class="btn btn-info btn-lg test_modal" data-toggle="modal">Open Modal</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-
-
-
-
-  <div id="modal-placeholder"></div>
-  <p id="overlay" class="text-center load-overlay" >
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </p>
-  
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
 </body>
 
 </html>
