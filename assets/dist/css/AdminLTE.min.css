@@ -5348,6 +5348,7 @@
  }
  .panel {
     border-radius: 2px;
+    box-shadow: none;
  }
  .panel-heading {
     padding: 7.5px 7.5px;
