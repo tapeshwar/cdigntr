@@ -3,13 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Product extends CORE_Controller {
 
+    private $assets = []; 
 	public function __construct() {
 		parent::__construct();
 		$this->load->library('Util');
 		$this->load->model('product_model');
-		//$this->data['js'] = ['test.js'];
+        //$this->append_js(['test3.js','test4.js']);
+        //$this->append_js(['test3.js','test4.js']);
+        $this->assets['js'] = ['test3.js','test4.js'];
+        $this->assets['css'] = ['test3.css','test4.css'];
     }
 
+    
 
 	public function create_product(){
 		if(empty($this->session->userdata('id'))){
@@ -113,7 +118,7 @@ class Product extends CORE_Controller {
 			'product_data' => $data['data'],
 			'page' => $get['offset']
 		];
-		$this->load->view('template/template_dashboard',array_merge($data,$data));
+		$this->load->view('template/template_dashboard',array_merge($data,$this->assets));
 		
 	}
 }
