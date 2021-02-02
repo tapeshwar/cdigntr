@@ -21,15 +21,15 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
+  <span id="login_error"></span>
     <p class="login-box-msg">Sign In</p>
-    <span id="login_error"></span>
     <form id="user_login_form" action="<?=base_url('home/user_login')?>" method="post">
       <div class="form-group has-feedback">
-        <input text="text" name="username" class="form-control" placeholder="Username/Email" required>
+        <input text="text" name="username" class="form-control" placeholder="Username/Email" required data-msg-required="Username/Email is required">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" class="form-control" placeholder="Password" required data-msg-required="Password is required">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
