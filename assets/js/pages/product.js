@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
     $('#create_product_form').validate({
+
+        
     
         submitHandler:function(form){
             //var btn = $('#user_login_form').loading('set');
@@ -25,6 +27,54 @@ $(document).ready(function () {
             return false;
 
         }
+        
+    });
+
+
+
+    $(document).on('click', '.create_product_category', function () {
+        
+        $('.load-overlay').show();
+        $('#modal-placeholder').html('');
+        var actionUrl = $(this).attr('data-url');
+        //alert(actionUrl);
+        $('#modal-placeholder').load(actionUrl, function () {
+            $('.load-overlay').hide();
+            $("#myModalHorizontal").modal();
+            //$('.update-worker-error').remove();
+    
+             $("#product_category_form").validate({
+                submitHandler: function (form) {
+                    //alert($("#user_registration_form").attr('data-url'));
+                    //var btn = $('#user_registration_btn .btn_submit').loading('set');
+                    $.ajax({
+                        url: $("#product_category_form").attr('action'),
+                        dataType: "json",
+                        type: "post",
+                        data: new FormData($('#product_category_form')[0]),
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (d) {
+                            //alert(d);return false;
+                            if (d.status == 'success') {
+                                window.location.reload();
+                            } else {
+                                var err = '';
+                                $.each(d.message, function (key, value) {
+                                    $.each(value, function (k, v) {
+                                        err += v + '<br/>';
+                                    });
+                                });
+                                //$('#update-worker-form .btn_submit').before('<label class="error update-worker-error">' + err + '</label>');
+                            }
+                        }
+                    }).always(function () {
+                        //btn.loading('reset');
+                    });
+                }
+            }); 
+        });
     });
 
 });

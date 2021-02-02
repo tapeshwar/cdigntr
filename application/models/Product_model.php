@@ -9,7 +9,7 @@ class Product_model extends CI_Model {
     }
 
 
-	public function save_data($data,$idata){
+	public function save_data($data,$idata=NULL){
         if(!empty($data)){
             $this->db->insert('products',$data);
 
@@ -20,17 +20,24 @@ class Product_model extends CI_Model {
             return $this->db->insert('product_img',$img_data);
         }
     }
-    public function update_data($data,$id){
+
+    public function save_normal_data($data,$table){
         if(!empty($data)){
-            $this->db->where('id',$id);
-            return $this->db->update('products',$data);
+            return $this->db->insert($table,$data);
         }
     }
 
-    public function delete_data($id){
+    public function update_data($data,$id,$table){
+        if(!empty($data)){
+            $this->db->where('id',$id);
+            return $this->db->update($table,$data);
+        }
+    }
+
+    public function delete_data($id,$table){
         if(!empty($id)){
             $this->db->where('id',$id);
-            return $this->db->delete('products');
+            return $this->db->delete($table);
         }
     }
 
@@ -57,10 +64,7 @@ class Product_model extends CI_Model {
     }
 
     public function get_data2($get,$count){
-        //pr($get);
-        //pr($count);
-        //die;
-
+      
         if(!empty($get['name'])){
             $this->db->where('name', $get['name']);
         }
@@ -96,5 +100,37 @@ class Product_model extends CI_Model {
         $this->db->where($tbl_two_refid,$tbl_one_id);
         $query = $this->db->get($table);
         return $query->result_array();
+    }
+
+    public function get_normal_data($get,$count,$table){
+      
+        if(!empty($get['category_name'])){
+            $this->db->where('category_name', $get['category_name']);
+        }
+
+        if(!empty($count)){
+            return $count = $this->db->get($table)->num_rows();
+        }else{
+            if(!empty($get['offset'])){
+                $offset = $get['offset'];
+            }else{
+                $offset = 0;
+            }
+            if(!empty($get['limit'])){
+                $limit = $get['limit'];
+            }
+       
+            $this->db->limit($limit,$offset);
+        
+            if(!empty($count)){
+                $count = $this->db->get($table)->num_rows();
+            }
+            $query = $this->db->get($table);
+            $result = $query->result_array();
+            $data['data'] = $result;
+            return $data;
+        }
+        
+       
     }
 }

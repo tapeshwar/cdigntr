@@ -47,8 +47,20 @@ $method = $this->router->fetch_method();
           </ul> -->
         </li>
 
-        <li class="<?=($class =='product' && $method=='index') ? 'active' : ''?>"><a href="<?=base_url('product/index')?>"><i class="fa fa-circle-o text-red"></i> <span>Products</span></a></li>
-        <li class="<?=($class =='product' && $method=='create_product') ? 'active' : ''?>"><a href="<?=base_url('product/create_product')?>"><i class="fa fa-th"></i> <span>Add Products</span></a></li>
+        <li class="treeview <?=($class =='product' && $method=='index' || $method=='create_product' || $method=='create_product_category' || $method=='product_categories') ? 'active' : ''?>">
+          <a href="#">
+            <i class="fa fa-list"></i> <span>Product Section</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?=($class =='product' && $method=='index') ? 'active' : ''?>"><a href="<?=base_url('product/index')?>"><i class="fa fa-circle-o"></i> Products</a></li>
+            <li class="<?=($class =='product' && $method=='create_product') ? 'active' : ''?>"><a href="<?=base_url('product/create_product')?>"><i class="fa fa-circle-o"></i> Add New Product</a></li>
+            <li class="<?=($class =='product' && $method=='create_product_category') ? 'active' : ''?>"><a href="<?=base_url('product/product_categories')?>"><i class="fa fa-circle-o"></i> Product Categories</a></li>
+          </ul>
+        </li>
+
         <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>

@@ -10,8 +10,8 @@ class Product extends CORE_Controller {
 		$this->load->model('product_model');
         //$this->append_js(['test3.js','test4.js']);
         //$this->append_js(['test3.js','test4.js']);
-        $this->assets['js'] = ['test3.js','test4.js'];
-        $this->assets['css'] = ['test3.css','test4.css'];
+        $this->assets['js'] = ['product.js'];
+        //$this->assets['css'] = ['test3.css','test4.css'];
     }
 
     
@@ -57,7 +57,7 @@ class Product extends CORE_Controller {
 			'title' => 'Create Product',
 			'heading' => 'Create Product'
 		];
-		$this->load->view('template/template_dashboard',array_merge($data,$data));
+		$this->load->view('template/template_dashboard',array_merge($data,$this->assets));
 	}
 
 	public function index(){
@@ -79,13 +79,13 @@ class Product extends CORE_Controller {
 		$config['reuse_query_string'] = TRUE;
 		//$config['use_page_numbers'] = TRUE;
 
-	/* <ul class="pagination">
-		<li class="page-item disabled"><span class="page-link">Previous</span></li>
-		<li class="page-item"><a class="page-link" href="#">1</a></li>
-		<li class="page-item active"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
-		<li class="page-item"><a class="page-link" href="#">3</a></li>
-		<li class="page-item"><a class="page-link" href="#">Next</a></li>
-	</ul> */
+        /* <ul class="pagination">
+            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul> */
 
 		$config['full_tag_open'] = "<ul class='pagination'>";
 		$config['full_tag_close'] ="</ul>";
@@ -120,5 +120,111 @@ class Product extends CORE_Controller {
 		];
 		$this->load->view('template/template_dashboard',array_merge($data,$this->assets));
 		
-	}
+    }
+
+    public function create_product_category($id=NULL){
+        if(!empty($this->input->post())){
+
+            $postdata = $this->input->post();
+            if(!empty($_FILES['category_img'])){
+				//$config['file_name'] = date("Y_m_d H:i:s");
+				$config = [
+					//'encrypt_name' => TRUE,
+					'file_name' => 'custom_name'.time(),
+					'upload_path'=>'uploads/',
+					'allowed_types'=>'gif|jpg|png',
+					'max_width'=>1024,
+					'max_size'=>100,
+					'max_height'=>768
+				];          
+               
+				$this->upload->initialize($config);
+				$this->upload->do_upload('category_img');
+
+				$res_data = $this->upload->data();
+                $filename = $res_data['file_name'];
+            }   
+            $postdata['category_img'] = $filename;
+            
+            $res = $this->product_model->save_normal_data($postdata,'product_category');
+			if(!empty($res)){
+				$this->session->set_flashdata('success', 'Product category added successfully!!');
+				$return['status'] = 'success';
+				$return['msg'] = 'Product added successfully!!';
+				echo json_encode($return);
+				exit();
+			}
+        
+        }
+
+
+        $data = [
+            'title' => 'Add New Category',
+            'heading' => 'Add New Category',
+            //'product_data' => $data['data'],
+            //'page' => $get['offset']
+        ];
+        $this->load->view('product/create_product_category_modal',array_merge($data,$this->assets));
+        
+    }
+
+    
+    public function product_categories(){
+		if(empty($this->session->userdata('id'))){
+			return redirect(base_url());
+		}
+
+		$get = $this->input->get();
+		if(!empty($get['category_name'])){
+			$get['category_name'] = $get['category_name'];
+		}
+		
+        //$total_row = $this->product_model->get_data2($get,'count');
+        $total_row = $this->product_model->get_normal_data($get,'count','product_category');
+
+		$config['base_url'] = base_url('product/product_categories');
+		$config['total_rows'] = $total_row;
+		$config['per_page'] = 10;
+		$config['uri_segment'] = 3;
+		$config['reuse_query_string'] = TRUE;
+		//$config['use_page_numbers'] = TRUE;
+
+
+		$config['full_tag_open'] = "<ul class='pagination'>";
+		$config['full_tag_close'] ="</ul>";
+		$config['num_tag_open'] = "<li class='page-item'><span class='page-link'>";
+		$config['num_tag_close'] = "</span></li>";
+		$config['cur_tag_open'] = "<li class='page-item active'><span class='page-link'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></span></li>";
+		$config['next_tag_open'] = "<li class='page-item'><span class='page-link'>";
+		$config['next_tag_close'] = "</span></li>";
+		$config['prev_tag_open'] = "<li class='page-item'><span class='page-link'>";
+		$config['prev_tag_close'] = "</span></li>";
+		$config['first_tag_open'] = "<li class='page-item'><span class='page-link'>";
+		$config['first_tag_close'] = "</span></li>";
+		$config['last_tag_open'] = "<li class='page-item'><span class='page-link'>";
+		$config['last_tag_close'] = "</span></li>";
+
+
+
+		$this->pagination->initialize($config); 
+
+		$get['offset'] = $this->uri->segment(3);
+		$get['limit'] = 5;
+		
+        //$data = $this->product_model->get_data2($get,$count=NULL);
+        $data = $this->product_model->get_normal_data($get,$count=NULL,'product_category');
+		//pr($data);die;
+
+		$data = [
+			'title' => 'Product Category List',
+			'heading' => 'Product Category List',
+			'product_data' => $data['data'],
+			'page' => $get['offset']
+		];
+		$this->load->view('template/template_dashboard',array_merge($data,$this->assets));
+		
+    }
+    
+    
 }

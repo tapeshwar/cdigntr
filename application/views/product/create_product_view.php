@@ -5,20 +5,18 @@
     </div>
 
 
-    <div class="col-md-12">
-
-        <form id="create_product_form" action="<?= base_url('product/create_product') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
-
+    <form id="create_product_form" action="<?= base_url('product/create_product') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <div class="col-md-12">
 
             <div class="col-sm-4">
                 <label class="control-label">Product Code:</label>
-                <input type="text" value="" name="product_id" class="form-control" placeholder="Product Code" required>
+                <input type="text" value="" name="product_id" class="form-control" placeholder="Product Code" required data-msg-required="Product code is required">
             </div>
 
 
             <div class="col-sm-4">
                 <label class="control-label">Product Name:</label>
-                <input type="text" value="" name="name" class="form-control" placeholder="Product Name" required>
+                <input type="text" value="" name="name" class="form-control" placeholder="Product Name" required data-msg-required="Product name is required">
             </div>
             <div class="col-sm-4">
                 <label class="control-label">Product Category:</label>
@@ -71,17 +69,17 @@
 
             <div class="col-sm-4">
                 <label class="control-label">Product Image:</label>
-                <input type="file" value="" name="product_img" class="form-control" placeholder="Product Image">
+                <input type="file" value="" name="product_img" class="form-control view_photo" placeholder="Product Image">
             </div>
 
-    </div>
-
-
-    <div class="col-md-12 mt20">
-        <div class="col-md-4">
-            <button type="submit" class="btn btn-primary btn-sm btn-flat product_create_btn">Submit</button>
         </div>
-    </div>
+
+
+        <div class="col-md-12 mt20">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary btn-md btn-flat product_create_btn">Submit</button>
+            </div>
+        </div>
     </form>
 
 
