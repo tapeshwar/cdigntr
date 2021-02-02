@@ -98,11 +98,13 @@
 .skin-blue .sidebar-menu .treeview-menu > li > a {
     /* color: #8aa4af; */
     color: #666;
+    font-weight: 400;
 }
 .skin-blue .sidebar-menu .treeview-menu > li.active > a,
 .skin-blue .sidebar-menu .treeview-menu > li > a:hover {
     /* color: #fff; */
     color: #191818;
+    font-weight: 400;
 }
 .skin-blue .sidebar-form {
     border-radius: 3px;

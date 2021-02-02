@@ -28,6 +28,7 @@ class Product_model extends CI_Model {
     }
 
     public function update_data($data,$id,$table){
+        unset($data['old_img']);
         if(!empty($data)){
             $this->db->where('id',$id);
             return $this->db->update($table,$data);
@@ -103,6 +104,10 @@ class Product_model extends CI_Model {
     }
 
     public function get_normal_data($get,$count,$table){
+
+        if(!empty($get['id'])){
+            $this->db->where('id', $get['id']);
+        }
       
         if(!empty($get['category_name'])){
             $this->db->where('category_name', $get['category_name']);
@@ -110,7 +115,8 @@ class Product_model extends CI_Model {
 
         if(!empty($count)){
             return $count = $this->db->get($table)->num_rows();
-        }else{
+        }
+        else{
             if(!empty($get['offset'])){
                 $offset = $get['offset'];
             }else{
@@ -118,19 +124,26 @@ class Product_model extends CI_Model {
             }
             if(!empty($get['limit'])){
                 $limit = $get['limit'];
-            }
-       
+            }    
             $this->db->limit($limit,$offset);
-        
+      
             if(!empty($count)){
                 $count = $this->db->get($table)->num_rows();
             }
+
             $query = $this->db->get($table);
             $result = $query->result_array();
             $data['data'] = $result;
             return $data;
         }
-        
-       
+            
+    }
+
+    public function get_update_data($rid,$table){
+        if(!empty($rid['id'])){
+            $this->db->where("id", $rid['id']);
+        }
+        $query = $this->db->get($table);
+        return $result = $query->row_array();
     }
 }

@@ -66,7 +66,7 @@ $(document).ready(function () {
                                         err += v + '<br/>';
                                     });
                                 });
-                                //$('#update-worker-form .btn_submit').before('<label class="error update-worker-error">' + err + '</label>');
+                                
                             }
                         }
                     }).always(function () {
@@ -77,4 +77,27 @@ $(document).ready(function () {
         });
     });
 
+
+    $('.delete_product_category').confirmAction({
+        title: {
+        text: 'Confirmation'
+        },
+        message: {
+        text: 'Are you sure want to delete?'
+        },     
+        actions: {
+        confirm: {
+            //text: 'Okey',
+            callback: function(confirm, cancel) {    
+                $.get($('.delete_product_category').attr('data-url'), '',
+                    function (data, textStatus, jqXHR) {
+                        //alert(data);
+                        document.location.reload();
+                    },    
+                ); 
+            }
+        }
+        }
+    });
+    
 });

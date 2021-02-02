@@ -217,6 +217,7 @@
 <script src="<?=base_url('assets/chart.js/Chart.js')?>"></script>
 <script src="<?=base_url('assets/dist/js/pages/dashboard2.js')?>"></script>
 <script src="<?=base_url('assets/dist/js/demo.js')?>"></script>
+<script src="<?=base_url('assets/jquery-confirm/jquery.confirm-action.js')?>"></script>
 <script src="<?=base_url('assets/js/pages/common.js')?>"></script>
 <?php
 //pr($this->append_js());

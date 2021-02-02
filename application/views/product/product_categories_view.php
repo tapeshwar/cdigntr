@@ -58,11 +58,14 @@
                 <td><?= $i + $page ?></td>
                
                 <td><?= $product['category_name'] ?></td>
-                <td><?= $product['category_img'] ?></td>
+                <td>
+                    <?php if(!empty($product['category_img'])){ ?>
+                    <img src="<?=base_url('uploads/'.$product['category_img'])?>" height="30" ></td>
+                    <?php } ?>
                
                 <td>
                   <a href="javascript:void(0)" data-url="<?= base_url('product/create_product_category/' . $product['id']) ?>" class="btn btn-primary btn-xs btn-flat create_product_category"><i class="fa fa-pencil" title="Edit"></i></a>
-                  <a href="javascript:void(0)" data-url="<?= base_url('product/edit_category') ?>" class="btn btn-danger btn-xs btn-flat" title="Delete"><i class="fa fa-trash"></i></a>
+                  <a href="javascript:void(0)" data-url="<?= base_url('product/delete_product_category/'.$product['id']) ?>" class="btn btn-danger btn-xs btn-flat delete_product_category " title="Delete"><i class="fa fa-trash"></i></a>
 
                 </td>
               </tr>
