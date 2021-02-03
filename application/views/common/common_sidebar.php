@@ -49,7 +49,7 @@ $method = $this->router->fetch_method();
 
         <li class="treeview <?=($class =='product' && $method=='index' || $method=='create_product' || $method=='create_product_category' || $method=='product_categories') ? 'active' : ''?>">
           <a href="#">
-            <i class="fa fa-list"></i> <span>Product Section</span>
+            <i class="fa fa-shopping-cart"></i> <span> E-Commerce</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -58,6 +58,21 @@ $method = $this->router->fetch_method();
             <li class="<?=($class =='product' && $method=='index') ? 'active' : ''?>"><a href="<?=base_url('product/index')?>"><i class="fa fa-circle-o"></i> Products</a></li>
             <li class="<?=($class =='product' && $method=='create_product') ? 'active' : ''?>"><a href="<?=base_url('product/create_product')?>"><i class="fa fa-circle-o"></i> Add New Product</a></li>
             <li class="<?=($class =='product' && $method=='product_categories') ? 'active' : ''?>"><a href="<?=base_url('product/product_categories')?>"><i class="fa fa-circle-o"></i> Product Categories</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview <?=($class =='website' && $method=='index' || $method=='page' || $method=='slider' || $method=='gallery') ? 'active' : ''?>">
+          <a href="#">
+            <i class="fa fa-internet-explorer"></i> <span>Website</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?=($class =='website' && $method=='index') ? 'active' : ''?>"><a href="<?=base_url('website/index')?>"><i class="fa fa-circle-o"></i> Menus</a></li>
+            <li class="<?=($class =='website' && $method=='page') ? 'active' : ''?>"><a href="<?=base_url('website/page')?>"><i class="fa fa-circle-o"></i> Pages</a></li>
+            <li class="<?=($class =='website' && $method=='slider') ? 'active' : ''?>"><a href="<?=base_url('website/slider')?>"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li class="<?=($class =='website' && $method=='gallery') ? 'active' : ''?>"><a href="<?=base_url('website/gallery')?>"><i class="fa fa-circle-o"></i> Gallery</a></li>
           </ul>
         </li>
 
