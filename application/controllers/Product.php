@@ -8,10 +8,7 @@ class Product extends CORE_Controller {
 		parent::__construct();
 		$this->load->library('Util');
 		$this->load->model('product_model');
-        //$this->append_js(['test3.js','test4.js']);
-        //$this->append_js(['test3.js','test4.js']);
         $this->assets['js'] = ['product.js'];
-        //$this->assets['css'] = ['test3.css','test4.css'];
     }
 
     

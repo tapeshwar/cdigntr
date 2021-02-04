@@ -1,7 +1,7 @@
 <div class="row">
 
     <div class="col-md-12" style="margin-bottom: 10px;">
-        <a href="<?= base_url('product/index') ?>" class="btn btn-sm btn-flat btn-primary pull-right">Product List</a>
+        <a href="<?= base_url('product/index') ?>" class="btn btn-sm btn-flat btn-primary pull-right"><i class="fa fa-building"></i> <span> Product List</span></a>
     </div>
 
 

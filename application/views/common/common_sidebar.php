@@ -37,10 +37,7 @@ $method = $this->router->fetch_method();
         <li class="<?=($class =='home' && $method=='index') ? 'active' : ''?>">
           <a href="<?=base_url('home/index')?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
+        </a>
           <!-- <ul class="treeview-menu">
             <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
