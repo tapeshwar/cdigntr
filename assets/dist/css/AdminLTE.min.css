@@ -5389,6 +5389,27 @@
     color: #FB3A3A;
     font-weight: normal;
 }
+.alert {
+    padding: 13px;
+}
+.alert-dismissible {
+    padding-right: 13px;
+}
+.form-control {
+    font-size: 13px;
+}
+.modal-header {
+    background-color: #0073b7;
+    border-bottom-color: #f4f4f4;
+    color: #fff;
+    padding: 10px 15px;
+}
+
+.modal-header .close {
+    margin-top: -2px;
+    color: #fff;
+    opacity: 0.9;
+}
  @media print {
      .no-print,
      .main-sidebar,
