@@ -157,36 +157,41 @@ class Product extends CORE_Controller {
                     echo json_encode($return);
                     exit();
                 }
+                
+            }else{
+                if(!empty($_FILES['category_img']['name'])){
+                    //$config['file_name'] = date("Y_m_d H:i:s");
+                    $config = [
+                        //'encrypt_name' => TRUE,
+                        'file_name' => 'custom_name'.time(),
+                        'upload_path'=>'uploads/',
+                        'allowed_types'=>'gif|jpg|png',
+                        'max_width'=>1024,
+                        'max_size'=>100,
+                        'max_height'=>768
+                    ];          
+                   
+                    $this->upload->initialize($config);
+                    $this->upload->do_upload('category_img');
+    
+                    $res_data = $this->upload->data();
+                    $filename = (!empty($res_data['file_name'])) ? $res_data['file_name'] : '';
+                    $postdata['category_img'] = $filename;
+                }
+                unset($postdata['old_img']);
+                $res = $this->product_model->save_normal_data($postdata,'product_category');
+                if(!empty($res)){
+                    $this->session->set_flashdata('success', 'Product category added successfully!!');
+                    $return['status'] = 'success';
+                    $return['msg'] = 'Product category added successfully!!';
+                    echo json_encode($return);
+                    exit();
+                }
             }
 
-            if(!empty($_FILES['category_img']['name'])){
-				//$config['file_name'] = date("Y_m_d H:i:s");
-				$config = [
-					//'encrypt_name' => TRUE,
-					'file_name' => 'custom_name'.time(),
-					'upload_path'=>'uploads/',
-					'allowed_types'=>'gif|jpg|png',
-					'max_width'=>1024,
-					'max_size'=>100,
-					'max_height'=>768
-				];          
-               
-				$this->upload->initialize($config);
-				$this->upload->do_upload('category_img');
-
-				$res_data = $this->upload->data();
-                $filename = (!empty($res_data['file_name'])) ? $res_data['file_name'] : '';
-                $postdata['category_img'] = $filename;
-            }
             
-            $res = $this->product_model->save_normal_data($postdata,'product_category');
-			if(!empty($res)){
-				$this->session->set_flashdata('success', 'Product category added successfully!!');
-				$return['status'] = 'success';
-				$return['msg'] = 'Product category added successfully!!';
-				echo json_encode($return);
-				exit();
-			}
+            
+            
         
         }
         
@@ -198,7 +203,7 @@ class Product extends CORE_Controller {
         $data = [
             'title' => 'Add New Category',
             'heading' => 'Add New Category',
-            'res_data' => $ret_data,
+            'res_data' => (!empty($ret_data)) ? $ret_data : NULL,
         ];
         
         $this->load->view('product/create_product_category_modal',array_merge($data,$this->assets));
