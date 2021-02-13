@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/font-awesome/css/font-awesome.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/Ionicons/css/ionicons.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/jvectormap/jquery-jvectormap.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/jstree/themes/default/style.min.css')?>" />
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/AdminLTE.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/skins/_all-skins.min.css') ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

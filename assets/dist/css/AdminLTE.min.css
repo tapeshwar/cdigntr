@@ -5397,6 +5397,7 @@
 }
 .form-control {
     font-size: 13px;
+    font-weight: normal;
 }
 .modal-header {
     background-color: #0073b7;

@@ -219,6 +219,7 @@
 <script src="<?=base_url('assets/dist/js/demo.js')?>"></script>
 <script src="<?=base_url('assets/jquery-confirm/jquery.confirm-action.js')?>"></script>
 <script src="<?=base_url('assets/js/pages/common.js')?>"></script>
+<script src="<?=base_url('assets/jstree/jstree.min.js')?>"></script>
 <?php
 //pr($this->append_js());
 //print_r($js);

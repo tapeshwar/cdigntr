@@ -99,5 +99,41 @@ $(document).ready(function () {
         }
         }
     });
+
+    
+    $('#jstree').jstree({
+            autoOpen: true,
+            plugins: ["state"],
+            checked : true
+        });
+   
+    $('#jstree').on("changed.jstree", function (e, data) {
+        //document.location.reload()
+        $('#product_cat').attr('value',data.selected);
+        //document.location.reload();
+        //console.log(data.selected);
+        //alert(data.selected);
+    });
+    
+    /* $('button').on('click', function () {
+        $('#jstree').jstree(true).select_node('child_node_1');
+        $('#jstree').jstree('select_node', 'child_node_1');
+        $.jstree.reference('#jstree').select_node('child_node_1');
+    }); */
+
+    $(document).on('click','.jtreeExpandAll', function(){
+        $("#jstree").jstree("open_all");
+        open = true;
+    })
+
+    $(document).on('click','.jtreeCollapseAll', function(){
+        $("#jstree").jstree("close_all");
+        open = false;
+    })
+    
+     $(document).on('click','.jsTreeNode', function(){
+        document.location.href=$(this).attr('href');
+    })
+    
     
 });

@@ -1,11 +1,12 @@
 
-  <div class="row"> 
+<div class="row" style="margin-left:0"> 
 
-  <div class="col-md-12" style="margin-bottom: 10px;">
-    <a href="javascript:void(0)" data-url="<?= base_url('product/create_product_category') ?>" class="btn btn-sm btn-flat btn-primary pull-right create_product_category">New Product Category</a>
-  </div>
+    <div class="col-md-12">
+        <a href="javascript:void(0)" data-url="<?php echo base_url('product/create_product_category') ?>" class="btn btn-sm btn-flat btn-primary pull-right create_product_category">New Product Category</a>
+    </div>
   
-  <div class="col-md-12">
+  
+  <!-- <div class="col-md-8">
   <div class="box-header with-border" style="padding:0;">
     <div class="panel panel-default">
         <div class="panel-heading">Search</div>
@@ -30,11 +31,39 @@
     </div>
   </div>
   </div>
-   </div>
+   </div> -->
 
-     <div class="row"> 
-    <div class="col-lg-12 mt20">
+    
+     <div class="col-md-4 mt20" style="border:solid thin #e1e1e1; padding:5px 5px 5px 5px;">
+         <div style="padding-bottom:10px">
+         <button type="button" class="btn btn-sm btn-flat btn-default jtreeExpandAll">Expand All</button> 
+         <button type="button" class="btn btn-sm btn-flat btn-default jtreeCollapseAll">Collapse All</button>
+        </div>
+
+        <div id="jstree">
+            <ul>
+            <li id="default"><a href="<?=base_url('product/product_categories/default')?>" class="jsTreeNode">Default</a>
+                <ul>
+                <li id="child_node_1"><a href="<?=base_url('product/product_categories/child_node_1')?>" class="jsTreeNode">Child node 1</a></li>
+                <li id="child_node_2"><a href="<?=base_url('product/product_categories/child_node_2')?>" class="jsTreeNode">Child node 2</a></li>
+                </ul>
+            </li>
+            <li id="root_node_2"><a href="<?=base_url('product/product_categories/root_node_2')?>" class="jsTreeNode">Root node 2</a>
+            <ul>
+                <li id="child_node_21"><a href="<?=base_url('product/product_categories/child_node_21')?>" class="jsTreeNode">Child node 21</a></li>
+                <li id="child_node_22"><a href="<?=base_url('product/product_categories/child_node_22')?>" class="jsTreeNode">Child node 22</a></li>
+                </ul>
+            </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-lg-8 mt20">
   
+    <label>Category: </label>
+    <input type="text" class="form-control" id="product_cat" data-url="<?=base_url('product/product_categories')?>" name="product_cat">
+
       <?php //echo $this->pagination->create_links(); ?>
       <table class="table table-responsive table-bordered">
         <thead>
@@ -80,8 +109,10 @@
       <?php echo $this->pagination->create_links() ?>
     
 
-  </div>
-     </div>
+    </div>
+
+
+</div>
 
 
   <!-- <ul class="pagination">
