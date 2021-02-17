@@ -5411,6 +5411,49 @@
     color: #fff;
     opacity: 0.9;
 }
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #FFF;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.card-header {
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.mb-0 > a:hover {
+    color: #004a43;
+    text-decoration: underline;
+}
+.mb-0 > a {
+    display: block;
+    position: relative;
+}
+.mb-0 > a:after {
+    content: "\f078";
+    font-family: 'FontAwesome';
+    position: absolute;
+    right: 0;
+}
+
+.mb-0 > a[aria-expanded="true"]:after {
+    content: "\f077";
+}
  @media print {
      .no-print,
      .main-sidebar,

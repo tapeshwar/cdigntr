@@ -1,8 +1,6 @@
-
 <div class="row" style="margin-left:0"> 
 
-
-              <div class="col-lg-6">
+            <div class="col-lg-6">
               
                   <div id="accordion">
                   
@@ -23,7 +21,8 @@
                         <div class="card-body">
                           
                           <?php if(is_array($v['set_sub_menu'])){?>
-              <ol id="sortable1_<?=$v['id']?>" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded" style="margin-left:0">
+              <ol id="sortable1_<?=$v['id']?>" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded" style="margin:10px; padding-left:0">
+              <input type="hidden" value="sortable1_<?=$v['id']?>" class="shortinput" >
 	 		<?php 
 			  foreach($v['set_sub_menu'] as $k1=>$v1){?>
 		
@@ -161,8 +160,8 @@
 						<br clear="all">
 						<span class="Span2"><strong>Enable:</strong></span>
 						<span class="Span10">
-							<input type="radio" name="is_enable" id="is_enable_<?=$v3['id']?>" value="Y"<?php if($v3['enable']==Y){?> checked <?php } ?>>Yes
-							<input type="radio" name="is_enable" id="is_enable_<?=$v3['id']?>" value="N"<?php if($v3['enable']==N){?> checked <?php } ?>>No
+							<input type="radio" name="is_enable" id="is_enable_<?=$v3['id']?>" value="Y"<?php if($v3['enable']=='Y'){?> checked <?php } ?>>Yes
+							<input type="radio" name="is_enable" id="is_enable_<?=$v3['id']?>" value="N"<?php if($v3['enable']=='N'){?> checked <?php } ?>>No
 						</span>
 						<br clear="all">
 						<input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v3['id']?>)">
@@ -210,8 +209,8 @@
 								<br clear="all">
 								<span class="Span2"><strong>Enable:</strong></span>
 								<span class="Span10">
-									<input type="radio" name="is_enable" id="is_enable_<?=$v4['id']?>" value="Y"<?php if($v4['enable']==Y){?> checked <?php } ?>>Yes
-									<input type="radio" name="is_enable" id="is_enable_<?=$v4['id']?>" value="N"<?php if($v4['enable']==N){?> checked <?php } ?>>No
+									<input type="radio" name="is_enable" id="is_enable_<?=$v4['id']?>" value="Y"<?php if($v4['enable']=='Y'){?> checked <?php } ?>>Yes
+									<input type="radio" name="is_enable" id="is_enable_<?=$v4['id']?>" value="N"<?php if($v4['enable']=='N'){?> checked <?php } ?>>No
 								</span>
 								<br clear="all">
 								<input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v4['id']?>)">
@@ -258,8 +257,8 @@
 											<br clear="all">
 											<span class="Span2"><strong>Enable:</strong></span>
 											<span class="Span10">
-												<input type="radio" name="is_enable" id="is_enable_<?=$v5['id']?>" value="Y"<?php if($v5['enable']==Y){?> checked <?php } ?>>Yes
-												<input type="radio" name="is_enable" id="is_enable_<?=$v5['id']?>" value="N"<?php if($v5['enable']==N){?> checked <?php } ?>>No
+												<input type="radio" name="is_enable" id="is_enable_<?=$v5['id']?>" value="Y"<?php if($v5['enable']=='Y'){?> checked <?php } ?>>Yes
+												<input type="radio" name="is_enable" id="is_enable_<?=$v5['id']?>" value="N"<?php if($v5['enable']=='N'){?> checked <?php } ?>>No
 											</span>
 											<br clear="all">
 											<input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v5['id']?>)">
@@ -294,42 +293,7 @@
                 
                 <script>
                             
-                $().ready(function(){
-                var ns = $("#sortable1_<?=$v['id']?>").nestedSortable({
-                    forcePlaceholderSize: true,
-                    handle: 'div',
-                    helper:	'clone',
-                    items: 'li',
-                    opacity: .6,
-                    placeholder: 'placeholder',
-                    revert: 250,
-                    tabSize: 25,
-                    tolerance: 'pointer',
-                    toleranceElement: '> div',
-                    maxLevels: 5,
-                    isTree: true,
-                    expandOnHover: 700,
-                    startCollapsed: false
-                });
-                    
-                $('#toArray1_<?=$v['id']?>').click(function(e){		
-                $('#result').html('');
-                list = $('#sortable1_<?=$v['id']?>').nestedSortable('toArray', {startDepthCount: 0});
-                //var list = JSON.stringify(list);
-                $.ajax({
-                    type: "POST",
-                    url : "ajax.php",
-                    /*data: {'data':encodeURI(list)}*/
-                    data: {'data':list}
-                }).done(function(data){
-                    $('#result_<?=$v['id']?>').html(data);
-
-                    });
-                });
-                    
-
-            });			
- 
+                
             </script>
                 
                 
@@ -367,24 +331,7 @@
                     
                        <!-- This script is important to toggle show/hide menu items--> 
 					  <script>
-                          $().ready(function(){
-                              
-                              $('.expandEditor').attr('title','Click to show/hide item editor');
-                              $('.disclose').attr('title','Click to show/hide children');
-                              $('.deleteMenu').attr('title', 'Click to delete item.');
-                          
-                              $('.disclose').on('click', function() {
-                                  $(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass('mjs-nestedSortable-expanded');
-                                  $(this).toggleClass('ui-icon-plusthick').toggleClass('ui-icon-minusthick');
-                              });
-                              
-                              $('.expandEditor, .itemTitle').click(function(){
-                                  var id = $(this).attr('data-id');
-                                  $('#menuEdit'+id).toggle();
-                                  $(this).toggleClass('ui-icon-triangle-1-n').toggleClass('ui-icon-triangle-1-s');
-                              });
-                              
-                          });			
+                          		
                       
                       </script>           
                                  
@@ -397,67 +344,65 @@
               </div>
               
               
-            <div class="col-md-6" style="border:solid thin #E4DEDE">
+            <div class="col-md-6">
               
+            <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1"> Create Menu Set</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab2"> Add Menu</a></li>
+              <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Tab 1</a></li>
+              <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Tab 2</a></li>
+              <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Dropdown <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                </ul>
+              </li>
+              <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
             </ul>
-           
-          
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade active show" id="tab1">
-            <form action="controller/menu_controller.php" method="post">
-            <div class="form-group">
-               <input class="form-control" id="menu_set_name" name="menu_set_name" type="text" required placeholder="Menu set name" style="width:80%">
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+                <b>How to use:</b>
+
+                <p>Exactly like the original bootstrap tabs except you should use
+                  the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
+                A wonderful serenity has taken possession of my entire soul,
+                like these sweet mornings of spring which I enjoy with my whole heart.
+                I am alone, and feel the charm of existence in this spot,
+                which was created for the bliss of souls like mine. I am so happy,
+                my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
+                that I neglect my talents. I should be incapable of drawing a single stroke
+                at the present moment; and yet I feel that I never was a greater artist than now.
               </div>
-            
-            <div class="tile-footer">
-              <button class="btn btn-primary" type="submit" name="create_menu_set">Create </button>
-            </div>
-            </form>
-            </div>
-            
-            <div class="tab-pane fade" id="tab2">
-            
-            <form action="controller/menu_controller.php" method="post">
-              <div class="form-group">
-                    
-                    <select class="form-control" name="menu_set_id" id="menu_set_id" required style="width:80%">
-                      <option value="">Select Menu Set</option>
-					  	<?php 
-							$menu_set = get_list_with_session('menu_set');
-							foreach($menu_set as $k=>$v){ 
-						?>
-						  <option value="<?=$v['id']?>"><?=$v['name']?></option>
-						 <?php } ?>
-                      </select>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                The European languages are members of the same family. Their separate existence is a myth.
+                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                new common language would be desirable: one could refuse to pay expensive translators. To
+                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                words. If several languages coalesce, the grammar of the resulting language is more simple
+                and regular than that of the individual languages.
               </div>
-            
-             <div class="form-group">      
-                    <input class="form-control" id="menu_title" name="menu_title" type="text" placeholder="Menu Title" style="width:80%">
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_3">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                like Aldus PageMaker including versions of Lorem Ipsum.
               </div>
-               <div class="form-group"> 
-                    <input class="form-control" id="menu_heading" name="menu_heading" type="text" required placeholder="Menu Heading" style="width:80%">
-              </div>
-              
-               <div class="form-group"> 
-                    
-                    <input type="text" name="custom_link" id="custom_link1" class="form-control custom_link" placeholder="Custom Link" style="width:80%" />
-						<a href="javascript:opendialog()">
-						<i class="icon icon-search" title="Select" style="font-size: 25px"></i>
-						</a>
-              </div>
-              
-              <div class="tile-footer">
-              <button class="btn btn-primary" type="submit" name="create_menu">Add </button>
+              <!-- /.tab-pane -->
             </div>
-            
-            </form>
-            
-            </div>
-            
-            </div>
+            <!-- /.tab-content -->
+          </div>
               
               
               	 

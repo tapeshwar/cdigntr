@@ -206,6 +206,7 @@
 
 <!-- jQuery 3 -->
 <script src="<?=base_url('assets/jquery/dist/jquery.min.js')?>"></script>
+
 <script src="<?=base_url('assets/bootstrap/dist/js/bootstrap.min.js')?>"></script>
 <script src="<?=base_url('assets/jquery-validation/dist/jquery.validate.js')?>"></script>
 <script src="<?=base_url('assets/fastclick/lib/fastclick.js')?>"></script>
@@ -220,6 +221,13 @@
 <script src="<?=base_url('assets/jquery-confirm/jquery.confirm-action.js')?>"></script>
 <script src="<?=base_url('assets/js/pages/common.js')?>"></script>
 <script src="<?=base_url('assets/jstree/jstree.min.js')?>"></script>
+
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script src="<?=base_url('assets/nestedSortable/jquery.mjs.nestedSortable2.js')?>"></script>
+
+
+
 <?php
 //pr($this->append_js());
 //print_r($js);
