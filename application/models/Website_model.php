@@ -78,6 +78,110 @@ class Website_model extends CI_Model {
     return $set_name;
     }
 
+    public function update_menu_order($id,$data){
+        $list = $data['data'];
+        if ($list !='') {
+            $sno = 0;
+            foreach ($list as $key => $value) { 
+                $item_id = (!empty($value['item_id'])) ? $value['item_id'] : '';
+                $v_id = (!empty($value['id'])) ? $value['id'] : '';
+                $this->db->query("UPDATE menu SET 
+                parent   = '" . $value['parent_id'] . "',
+                s_no     = '" . $sno . "' 
+                WHERE id = '" . $v_id . "' ");
+                $sno++;
+            }            
+        }
+    }
+
+    public function update_menu_name($id,$data){
+        return $this->db->query("UPDATE menu SET 
+            title = '".$data['title']."',
+            heading = '".$data['name']."',
+            custom_link = '".$data['custom_link']."',
+            `enable` = '".$data['is_enable']."' WHERE id = $id ");
+    }
+    
+    
+    public function delete_menu_row($id){
+
+        return $this->db->query("DELETE FROM menu WHERE id =$id");
+    }
+
+
+    public function delete_menu_set_row($id){
+
+        return $this->db->query("DELETE FROM menu_set WHERE id =$id");
+    }
+    
+
+    
+    public function create_menu_set($data){
+        if(!empty($data)){
+            return $this->db->insert("menu_set",$data);
+        }
+        
+    }
+
+    public function get_menu_set($project_key){
+        if(!empty($project_key)){
+            $this->db->where('project_key',$project_key);
+            $query = $this->db->get("menu_set");
+            return $query->result_array();
+        }
+        
+    }
+
+    
+    public function add_menu_to_menuset($data){
+        if(!empty($data)){
+            return $this->db->insert("menu",$data);
+        }
+        
+    }
+
+    public function add_page($data){
+        if(!empty($data)){
+            return $this->db->insert("page",$data);
+        }
+        
+    }
+
+    public function get_data2($get,$count){
+      
+        if(!empty($get['name'])){
+            $this->db->where('name', $get['name']);
+        }
+
+        if(!empty($count)){
+            return $count = $this->db->get('page')->num_rows();
+        }else{
+            if(!empty($get['offset'])){
+                $offset = $get['offset'];
+            }else{
+                $offset = 0;
+            }
+            if(!empty($get['limit'])){
+                $limit = $get['limit'];
+            }
+       
+            $this->db->limit($limit,$offset);
+        
+            if(!empty($count)){
+                $count = $this->db->get('page')->num_rows();
+            }
+            $query = $this->db->get('page');
+            $result = $query->result_array();
+            $data['data'] = $result;
+            return $data;
+        }
+        
+       
+    }
+
+    
+
+
 }
 
 

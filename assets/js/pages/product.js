@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     $('#create_product_form').validate({
 
-        
-    
         submitHandler:function(form){
             //var btn = $('#user_login_form').loading('set');
             $.ajax({

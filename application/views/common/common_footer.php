@@ -205,22 +205,24 @@
 
 
 <!-- jQuery 3 -->
-<script src="<?=base_url('assets/jquery/dist/jquery.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/jquery/dist/jquery.min.js')?>"></script>
 
-<script src="<?=base_url('assets/bootstrap/dist/js/bootstrap.min.js')?>"></script>
-<script src="<?=base_url('assets/jquery-validation/dist/jquery.validate.js')?>"></script>
-<script src="<?=base_url('assets/fastclick/lib/fastclick.js')?>"></script>
-<script src="<?=base_url('assets/dist/js/adminlte.min.js')?>"></script>
-<script src="<?=base_url('assets/jquery-sparkline/dist/jquery.sparkline.min.js')?>"></script>
-<script src="<?=base_url('assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')?>"></script>
-<script src="<?=base_url('assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')?>"></script>
-<script src="<?=base_url('assets/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
-<script src="<?=base_url('assets/chart.js/Chart.js')?>"></script>
-<script src="<?=base_url('assets/dist/js/pages/dashboard2.js')?>"></script>
-<script src="<?=base_url('assets/dist/js/demo.js')?>"></script>
-<script src="<?=base_url('assets/jquery-confirm/jquery.confirm-action.js')?>"></script>
-<script src="<?=base_url('assets/js/pages/common.js')?>"></script>
-<script src="<?=base_url('assets/jstree/jstree.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/bootstrap/dist/js/bootstrap.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/jquery-validation/dist/jquery.validate.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/fastclick/lib/fastclick.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/dist/js/adminlte.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/jquery-sparkline/dist/jquery.sparkline.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/chart.js/Chart.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/dist/js/pages/dashboard2.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/dist/js/demo.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/jquery-confirm/jquery-confirm.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/pages/common.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/jstree/jstree.min.js')?>"></script>
+
+<script type="text/javascript" src="<?=base_url('assets/ckeditor/ckeditor.js')?>"></script>
 
 
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>

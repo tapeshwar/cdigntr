@@ -5,7 +5,6 @@
                   <div id="accordion">
                   
                    <?php 
-					  //$menu2 = setLink2('');
 					  if($menu2!=''){
 					  foreach($menu2 as $k=>$v){
 					?>
@@ -22,41 +21,41 @@
                           
                           <?php if(is_array($v['set_sub_menu'])){?>
               <ol id="sortable1_<?=$v['id']?>" class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded" style="margin:10px; padding-left:0">
-              <input type="hidden" value="sortable1_<?=$v['id']?>" class="shortinput" >
+              <input type="hidden" value="sortable1_<?=$v['id']?>" class="shortinput" data-id="<?=$v['id']?>" >
 	 		<?php 
 			  foreach($v['set_sub_menu'] as $k1=>$v1){?>
 		
 	        <li style="display: list-item;" class="mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_<?=$v1['id']?>">
             <div class="menuDiv">
-            <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+            <span title="Click to show/hide menu" class="disclose ui-icon ui-icon-minusthick">
             <span></span>
             </span>
-            <span title="Click to show/hide item editor" data-id="<?=$v1['id']?>" class="expandEditor ui-icon ui-icon-pencil">
+            <span title="Update menu" data-id="<?=$v1['id']?>" class="expandEditor ui-icon ui-icon-pencil">
             <span></span>
             </span>
             <span>
             <span class="itemTitle ui-icon-triangle-1-n ui-icon-triangle-1-s"><?=$v1['name']?></span>
-            <span title="Click to delete item." data-id="<?=$v1['id']?>" onClick="javascript:delete_menu(<?=$v1['id']?>)" class="deleteMenu ui-icon ui-icon-closethick">
+            <span title="Click to delete menu" data-id="<?=$v1['id']?>" data-url="<?=base_url('website/delete_menu/'.$v1['id'])?>" class="delete_menu deleteMenu ui-icon ui-icon-closethick">
             <span></span>
             </span>
             </span>
 		    <div id="menuEdit<?=$v1['id']?>" class="menuEdit" style="display: none">
-		    <form method="post">
+		    <form method="post" id="edit_menu_name_form<?=$v1['id']?>" action="<?=base_url('website/edit_menu/'.$v1['id'])?>" enctype="multipart/form-data" style="margin-bottom:0px">
 			<span class="Span2"><strong>Title:</strong></span>
 			<span class="Span10">
-				<input type="text" name="title" placeholder="Menu Title" id="title_<?=$v1['id']?>" value="<?=$v1['title']?>">
+				<input type="text" name="title" placeholder="Menu Title" id="title_<?=$v1['id']?>" value="<?=$v1['title']?>" required>
 			</span>
 			<br clear="all">
 			<span class="Span2"><strong>Name:</strong></span>
 			<span class="Span10">
-				<input type="text" name="name" placeholder="Menu Name" id="menu_<?=$v1['id']?>" value="<?=$v1['name']?>">
+				<input type="text" name="name" placeholder="Menu Name" id="menu_<?=$v1['id']?>" value="<?=$v1['name']?>" required>
 			</span>
 			<br clear="all">
-			<span class="Span2"><strong>Custom Link:</strong></span>
+			<span class="Span2"><strong>Page Link:</strong></span>
 			<span class="Span8">
-				<input type="text" name="custom_link" id="custom_link1_<?=$v1['id']?>" value="<?=$v1['custom_link']?>" class="span7 custom_link" placeholder="Custom Link" />
+				<input type="text" name="custom_link" id="custom_link1_<?=$v1['id']?>" value="<?=$v1['custom_link']?>" class="span7 custom_link" placeholder="Page Link"/>
 				<a href="javascript:opendialog1(<?=$v1['id']?>)">
-					<i class="icon icon-search" title="Select" style="font-size: 20px"></i>
+					<i class="fa fa-search" title="Select" style="font-size: 20px"></i>
 				</a>
 			</span>
 			
@@ -67,7 +66,10 @@
 				<input type="radio" name="is_enable" id="is_enable_<?=$v1['id']?>" value="N"<?php if($v1['enable']=='N'){?> checked <?php } ?>>No
 			</span>
 			<br clear="all">
-		    <input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v1['id']?>)">
+            <span style="margin-top:10px">
+		    <input type="submit" data-mid="<?=$v1['id']?>" class="btn btn-primary btn-xs btn-flat btn-mini edit_menu_name_btn" value="Update">
+            <span style="color:green;" id="mresult_<?=$v1['id']?>"></span>
+            </span>
 		    </form>  
 	        </div>
 	        </div>
@@ -77,20 +79,20 @@
 		   	<?php foreach($v1['sub_menu'] as $k2=>$v2){?>
 			<li style="display: list-item;" class="mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_<?=$v2['id']?>">
 			   <div class="menuDiv">
-			   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+			   <span title="Click to show/hide menu" class="disclose ui-icon ui-icon-minusthick">
 			   <span></span>
 			   </span>
-			   <span title="Click to show/hide item editor" data-id="<?=$v2['id']?>" class="expandEditor ui-icon ui-icon-pencil ui-icon-triangle-1-n ui-icon-triangle-1-s">
+			   <span title="Update menu" data-id="<?=$v2['id']?>" class="expandEditor ui-icon ui-icon-pencil ui-icon-triangle-1-n ui-icon-triangle-1-s">
 			   <span></span>
 			   </span>
 			   <span>
-			   <span data-id="4" class="itemTitle ui-icon-triangle-1-n ui-icon-triangle-1-s"><?=$v2['name']?></span>
-			   <span title="Click to delete item." data-id="<?=$v2['id']?>" onClick="javascript:delete_menu(<?=$v2['id']?>)" class="deleteMenu ui-icon ui-icon-closethick">
+			   <span data-id="<?=$v2['id']?>" class="itemTitle ui-icon-triangle-1-n ui-icon-triangle-1-s"><?=$v2['name']?></span>
+			   <span title="Click to delete menu" data-id="<?=$v2['id']?>" data-url="<?=base_url('website/delete_menu/'.$v2['id'])?>" class="delete_menu deleteMenu ui-icon ui-icon-closethick">
 			   <span></span>
 			   </span>
 			   </span>
 			   <div id="menuEdit<?=$v2['id']?>" class="menuEdit" style="display: none">
-			   <form method="post">
+               <form method="post" id="edit_menu_name_form<?=$v2['id']?>" action="<?=base_url('website/edit_menu/'.$v2['id'])?>" enctype="multipart/form-data" style="margin-bottom:0px">
 					<span class="Span2"><strong>Title:</strong></span>
 					<span class="Span10">
 						<input type="text" name="title" placeholder="Menu Title" id="title_<?=$v2['id']?>" value="<?=$v2['title']?>">
@@ -101,11 +103,11 @@
 						<input type="text" name="name" placeholder="Menu Name" id="menu_<?=$v2['id']?>" value="<?=$v2['name']?>">
 					</span>
 					<br clear="all">
-					<span class="Span2"><strong>Custom Link:</strong></span>
+					<span class="Span2"><strong>Page Link:</strong></span>
 					<span class="Span8">
-						<input type="text" name="custom_link" id="custom_link1_<?=$v2['id']?>" value="<?=$v2['custom_link']?>" class="span7 custom_link" placeholder="Custom Link" />
+						<input type="text" name="custom_link" id="custom_link1_<?=$v2['id']?>" value="<?=$v2['custom_link']?>" class="span7 custom_link" placeholder="Page Link" />
 						<a href="javascript:opendialog1(<?=$v2['id']?>)">
-							<i class="icon icon-search" title="Select" style="font-size: 20px"></i>
+							<i class="fa fa-search" title="Select" style="font-size: 20px"></i>
 						</a>
 					</span>
 					
@@ -116,7 +118,11 @@
 						<input type="radio" name="is_enable" id="is_enable_<?=$v2['id']?>" value="N"<?php if($v2['enable']=="N"){?> checked <?php } ?>>No
 					</span>
 					<br clear="all">
-				<input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v2['id']?>)">
+                    <span style="margin-top:10px">
+                    <input type="submit" data-mid="<?=$v2['id']?>" class="btn btn-primary btn-xs btn-flat btn-mini edit_menu_name_btn" value="Update">
+                    <span style="color:green;" id="mresult_<?=$v2['id']?>"></span>
+                    </span>
+
 				</form>  
 			   </div>
 			   </div>
@@ -125,20 +131,20 @@
 			   		<?php foreach($v2['sub_menu'] as $k3=>$v3){?>
 				   	<li class="mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_<?=$v3['id']?>">
 				   	   <div class="menuDiv">
-					   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+					   <span title="Click to show/hide menu" class="disclose ui-icon ui-icon-minusthick">
 					   <span></span>
 					   </span>
-					   <span title="Click to show/hide item editor" data-id="<?=$v3['id']?>" class="expandEditor ui-icon ui-icon-pencil">
+					   <span title="Update menu" data-id="<?=$v3['id']?>" class="expandEditor ui-icon ui-icon-pencil">
 					   <span></span>
 					   </span>
 					   <span>
 					   <span data-id="<?=$v3['id']?>" class="itemTitle"><?=$v3['name']?></span>
-					   <span title="Click to delete item." data-id="<?=$v3['id']?>" onClick="javascript:delete_menu(<?=$v3['id']?>)" class="deleteMenu ui-icon ui-icon-closethick">
+					   <span title="Click to delete menu" data-id="<?=$v3['id']?>" data-url="<?=base_url('website/delete_menu/'.$v3['id'])?>" class="delete_menu deleteMenu ui-icon ui-icon-closethick">
 					   <span></span>
 					   </span>
 					   </span>
 					   <div id="menuEdit<?=$v3['id']?>" class="menuEdit" style="display: none">
-					   <form method="post">
+					   <form method="post" id="edit_menu_name_form<?=$v3['id']?>" action="<?=base_url('website/edit_menu/'.$v3['id'])?>" enctype="multipart/form-data" style="margin-bottom:0px">
 						<span class="Span2"><strong>Title:</strong></span>
 						<span class="Span10">
 							<input type="text" name="title" placeholder="Menu Title" id="title_<?=$v3['id']?>" value="<?=$v3['title']?>">
@@ -149,11 +155,11 @@
 							<input type="text" name="name" placeholder="Menu Name" id="menu_<?=$v3['id']?>" value="<?=$v3['name']?>">
 						</span>
 						<br clear="all">
-						<span class="Span2"><strong>Custom Link:</strong></span>
+						<span class="Span2"><strong>Page Link:</strong></span>
 						<span class="Span8">
-							<input type="text" name="custom_link" id="custom_link1_<?=$v3['id']?>" value="<?=$v3['custom_link']?>" class="span7 custom_link" placeholder="Custom Link" />
+							<input type="text" name="custom_link" id="custom_link1_<?=$v3['id']?>" value="<?=$v3['custom_link']?>" class="span7 custom_link" placeholder="Page Link" />
 					       <a href="javascript:opendialog1(<?=$v3['id']?>)">
-						     <i class="icon icon-search" title="Select" style="font-size: 20px"></i>
+						     <i class="fa fa-search" title="Select" style="font-size: 20px"></i>
 							</a>
 						</span>
 						
@@ -164,7 +170,10 @@
 							<input type="radio" name="is_enable" id="is_enable_<?=$v3['id']?>" value="N"<?php if($v3['enable']=='N'){?> checked <?php } ?>>No
 						</span>
 						<br clear="all">
-						<input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v3['id']?>)">
+						<span style="margin-top:10px">
+                        <input type="submit" data-mid="<?=$v3['id']?>" class="btn btn-primary btn-xs btn-flat btn-mini edit_menu_name_btn" value="Update">
+                        <span style="color:green;" id="mresult_<?=$v3['id']?>"></span>
+                        </span>
 						</form>  
 					   </div>
 				   	   </div>
@@ -173,21 +182,21 @@
 						   <?php foreach($v3['sub_menu'] as $k4=>$v4){?>
 						   <li style="display: list-item;" class="mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_<?=$v4['id']?>">
 							   <div class="menuDiv">
-							   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+							   <span title="Click to show/hide menu" class="disclose ui-icon ui-icon-minusthick">
 							   <span></span>
 							   </span>
-							   <span title="Click to show/hide item editor" data-id="<?=$v4['id']?>" class="expandEditor ui-icon ui-icon-pencil">
+							   <span title="Update menu" data-id="<?=$v4['id']?>" class="expandEditor ui-icon ui-icon-pencil">
 							   <span></span>
 							   </span>
 
 							   <span>
 							   <span data-id="<?=$v4['id']?>" class="itemTitle"><?=$v4['name']?></span>
-							   <span title="Click to delete item." data-id="<?=$v4['id']?>" onClick="javascript:delete_menu(<?=$v4['id']?>)" class="deleteMenu ui-icon ui-icon-closethick">
+							   <span title="Click to delete menu" data-id="<?=$v4['id']?>" data-url="<?=base_url('website/delete_menu/'.$v4['id'])?>" class="delete_menu deleteMenu ui-icon ui-icon-closethick">
 							   <span></span>
 							   </span>
 							   </span>
 							   <div id="menuEdit<?=$v4['id']?>" class="menuEdit" style="display: none">
-								<form method="post">
+                               <form method="post" id="edit_menu_name_form<?=$v4['id']?>" action="<?=base_url('website/edit_menu/'.$v4['id'])?>" enctype="multipart/form-data" style="margin-bottom:0px">
 								<span class="Span2"><strong>Title:</strong></span>
 								<span class="Span10">
 								<input type="text" name="title" placeholder="Menu Title" id="title_<?=$v4['id']?>" value="<?=$v4['title']?>">
@@ -198,11 +207,11 @@
 									<input type="text" name="name" placeholder="Menu Name" id="menu_<?=$v4['id']?>" value="<?=$v4['name']?>">
 								</span>
 								<br clear="all">
-								<span class="Span2"><strong>Custom Link:</strong></span>
+								<span class="Span2"><strong>Page Link:</strong></span>
 								<span class="Span8">
-									<input type="text" name="custom_link" id="custom_link1_<?=$v4['id']?>" value="<?=$v4['custom_link']?>" class="span7 custom_link" placeholder="Custom Link" />
+									<input type="text" name="custom_link" id="custom_link1_<?=$v4['id']?>" value="<?=$v4['custom_link']?>" class="span7 custom_link" placeholder="Page Link" />
 								<a href="javascript:opendialog4(<?=$v4['id']?>)">
-									<i class="icon icon-search" title="Select" style="font-size: 20px"></i>
+									<i class="fa fa-search" title="Select" style="font-size: 20px"></i>
 								</a>
 								</span>
 								
@@ -213,7 +222,10 @@
 									<input type="radio" name="is_enable" id="is_enable_<?=$v4['id']?>" value="N"<?php if($v4['enable']=='N'){?> checked <?php } ?>>No
 								</span>
 								<br clear="all">
-								<input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v4['id']?>)">
+								<span style="margin-top:10px">
+                                <input type="submit" data-mid="<?=$v4['id']?>" class="btn btn-primary btn-xs btn-flat btn-mini edit_menu_name_btn" value="Update">
+                                <span style="color:green;" id="mresult_<?=$v4['id']?>"></span>
+                                </span>
 								</form> 
 							    </div>
 								</div>
@@ -222,20 +234,20 @@
 									<?php foreach($v4['sub_menu'] as $k5=>$v5){?>
 									<li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_<?=$v5['id']?>">
 									   <div class="menuDiv">
-									   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+									   <span title="Click to show/hide menu" class="disclose ui-icon ui-icon-minusthick">
 									   <span></span>
 									   </span>
-									   <span title="Click to show/hide item editor" data-id="<?=$v5['id']?>" class="expandEditor ui-icon ui-icon-pencil">
+									   <span title="Update menu" data-id="<?=$v5['id']?>" class="expandEditor ui-icon ui-icon-pencil">
 									   <span></span>
 									   </span>
 									   <span>
 									   <span data-id="<?=$v5['id']?>" class="itemTitle"><?=$v5['name']?></span>
-									   <span title="Click to delete item." data-id="<?=$v5['id']?>" onClick="javascript:delete_menu(<?=$v5['id']?>)" class="deleteMenu ui-icon ui-icon-closethick">
+									   <span title="Click to delete menu" data-id="<?=$v5['id']?>" data-url="<?=base_url('website/delete_menu/'.$v5['id'])?>" class="delete_menu deleteMenu ui-icon ui-icon-closethick">
 									   <span></span>
 									   </span>
 									   </span>
 										<div id="menuEdit<?=$v5['id']?>" class="menuEdit" style="display: none">
-										<form method="post">
+										<form method="post" id="edit_menu_name_form<?=$v5['id']?>" action="<?=base_url('website/edit_menu/'.$v5['id'])?>" enctype="multipart/form-data" style="margin-bottom:0px">
 											<span class="Span2"><strong>Title:</strong></span>
 											<span class="Span10">
 												<input type="text" name="title" placeholder="Menu Title" id="title_<?=$v5['id']?>" value="<?=$v5['title']?>">
@@ -246,14 +258,14 @@
 												<input type="text" name="name" placeholder="Menu Name" id="menu_<?=$v5['id']?>" value="<?=$v5['name']?>">
 											</span>
 											<br clear="all">
-											<span class="Span2"><strong>Custom Link:</strong></span>
+											<span class="Span2"><strong>Page Link:</strong></span>
 											<span class="Span8">
-												<input type="text" name="custom_link" id="custom_link1_<?=$v5['id']?>" value="<?=$v5['custom_link']?>" class="span7 custom_link" placeholder="Custom Link" />
+												<input type="text" name="custom_link" id="custom_link1_<?=$v5['id']?>" value="<?=$v5['custom_link']?>" class="span7 custom_link" placeholder="Page Link" />
 												<a href="javascript:opendialog1(<?=$v5['id']?>)">
-													<i class="icon icon-search" title="Select" style="font-size: 20px"></i>
+													<i class="fa fa-search" title="Select" style="font-size: 20px"></i>
 												</a>
 											</span>
-											<span class="Span2" style="cursor:pointer"><i class="icon icon-search"></i></span>
+											<span class="Span2" style="cursor:pointer"><i class="fa fa-search"></i></span>
 											<br clear="all">
 											<span class="Span2"><strong>Enable:</strong></span>
 											<span class="Span10">
@@ -261,7 +273,10 @@
 												<input type="radio" name="is_enable" id="is_enable_<?=$v5['id']?>" value="N"<?php if($v5['enable']=='N'){?> checked <?php } ?>>No
 											</span>
 											<br clear="all">
-											<input type="button" class="btn btn-primary btn-mini" value="Update" onclick="edit_menu_name(<?=$v5['id']?>)">
+											<span style="margin-top:10px">
+                                            <input type="submit" data-mid="<?=$v5['id']?>" class="btn btn-primary btn-xs btn-flat btn-mini edit_menu_name_btn" value="Update">
+                                            <span style="color:green;" id="mresult_<?=$v5['id']?>"></span>
+                                            </span>
 										</form>
 										</div>
 										</div>
@@ -288,8 +303,8 @@
 		   		<?php } ?>
 		   		<br/>
               <div id="result_<?=$v['id']?>"></div>
-              <button type="submit" name="toArray" id="toArray1_<?=$v['id']?>" class="btn btn-success">Update Order</button>	
-              <button type="button" name="delete_menu_set" id="delete_menu_set" class="btn btn-danger" onClick="delete_set(<?=$v['id']?>)">Delete</button>	
+              <button type="button" name="toArray" id="toArray1_<?=$v['id']?>" data-url="<?=base_url('website/update_menu_order/'.$v['id'])?>" class="btn btn-sm btn-flat btn-success" title="Update menu order">Update Order</button>	
+              <button type="button" name="delete_menu_set" id="delete_menu_set" class="btn btn-sm btn-flat btn-danger delete_menu_set" data-url="<?=base_url('website/delete_menu_set/'.$v['id'])?>" title="Delete menu set"><i class="fa fa-trash"></i></button>	
                 
                 <script>
                             
@@ -302,7 +317,11 @@
 	   			</ol>
              
              	<?php } else{ ?>
+                 <div style="padding:5px">
 				  <p>!! No menus. Add menu on this menu set</p>
+
+                  <button type="button" name="delete_menu_set" id="delete_menu_set" class="btn btn-sm btn-flat btn-danger" onClick="delete_set(<?=$v['id']?>)" title="Delete menu set"><i class="fa fa-trash"></i></button>	
+                 </div>
              	<?php } ?>
                           
                         </div>
@@ -315,30 +334,20 @@
                     	<div class="card-header" id="heading-2">
                         <h5 class="mb-0">
                           <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-                            You have not a menu set. Create and add menus to them.
+                            You have't a menu set. Create and add menus to them.
                           </a>
                         </h5>
                       </div>
                       <div id="collapse-2" class="collapse" data-parent="#accordion" aria-labelledby="heading-2">
-                        <div class="card-body">
-                          You have no menus! First create a menu set and add menus to that menu set.
+                        <div class="card-body" style="padding:15px">
+                          You have no menus! First create a menu set and than add menus to them.
                         </div>
                       </div>
                     
                     </div>
                     
                     <?php } ?>
-                    
-                       <!-- This script is important to toggle show/hide menu items--> 
-					  <script>
-                          		
-                      
-                      </script>           
-                                 
-                     <!-- End This script is important to toggle show/hide menu items --> 
-   
-                    
-                    
+    
                   </div>
                   
               </div>
@@ -348,58 +357,64 @@
               
             <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Tab 1</a></li>
-              <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Tab 2</a></li>
-              <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  Dropdown <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                  <li role="presentation" class="divider"></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                </ul>
-              </li>
-              <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+              <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Create Menu Set</a></li>
+              <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">Add Menu</a></li>
+            
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1">
-                <b>How to use:</b>
+             <form id="create_menu_set_form" action="<?=base_url('website/create_menu_set')?>" method="post">
+               <div class="row">
+                <div class="form-group col-md-8">
+                <input class="form-control" id="menu_set_name" name="menu_set_name" type="text" required placeholder="Menu set name" data-msg-required="Menu set name is required">
+                </div>
+                
+                <div class="form-group col-md-12">
+                <button class="btn btn-primary btn-flat btn-sm create_menu_set_btn" type="submit" name="create_menu_set">Create Menu Set </button>
+                </div>
+               </div>
+                </form>
 
-                <p>Exactly like the original bootstrap tabs except you should use
-                  the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-                A wonderful serenity has taken possession of my entire soul,
-                like these sweet mornings of spring which I enjoy with my whole heart.
-                I am alone, and feel the charm of existence in this spot,
-                which was created for the bliss of souls like mine. I am so happy,
-                my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                that I neglect my talents. I should be incapable of drawing a single stroke
-                at the present moment; and yet I feel that I never was a greater artist than now.
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_2">
-                The European languages are members of the same family. Their separate existence is a myth.
-                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                new common language would be desirable: one could refuse to pay expensive translators. To
-                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                words. If several languages coalesce, the grammar of the resulting language is more simple
-                and regular than that of the individual languages.
+             
+              <form id="add_menu_form" action="<?=base_url('website/add_menu')?>" method="post">
+              <div class="row">
+              <div class="form-group col-md-8">
+                        
+                <select class="form-control" name="menu_set_id" id="menu_set_id" required data-msg-required="Please select menu set" >
+                <option value="">Select Menu Set</option>
+                <?php if(!empty($menu_set_list)){
+                    foreach($menu_set_list as $mset){ ?>
+                    <option value="<?=$mset['id']?>"><?=$mset['name']?></option>
+                <?php } } ?>
+                </select>
+                </div>
+                
+                <div class="form-group col-md-8">      
+                    <input class="form-control" id="menu_title" name="menu_title" type="text" placeholder="Menu Title" data-msg-required="Please enter title" required >
+                </div>
+                <div class="form-group col-md-8">
+                    <input class="form-control" id="menu_heading" name="menu_heading" type="text" required placeholder="Menu Heading" data-msg-required="Please enter heading" required>
+                </div>
+                
+                
+                <div class="form-group col-md-8"> 
+                        
+                    <input type="text" name="custom_link" id="custom_link1" class="form-control custom_link" placeholder="Page Link" />
+                    <a href="javascript:opendialog()">
+                    <i class="fa fa-search" title="Select" style="font-size: 25px"></i>
+                    </a>
+                </div>
+                
+                <div class="form-group col-md-12">
+                    <button class="btn btn-primary btn-flat btn-sm add_menu_btn" type="submit" name="add_menu">Add Menu </button>
+                </div>
               </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
+                </form>
               </div>
-              <!-- /.tab-pane -->
+              
             </div>
             <!-- /.tab-content -->
           </div>

@@ -93,8 +93,8 @@
                     <?php } ?>
                
                 <td>
-                  <a href="javascript:void(0)" data-url="<?= base_url('product/create_product_category/' . $product['id']) ?>" class="btn btn-primary btn-xs btn-flat create_product_category"><i class="fa fa-pencil" title="Edit"></i></a>
-                  <a href="javascript:void(0)" data-url="<?= base_url('product/delete_product_category/'.$product['id']) ?>" class="btn btn-danger btn-xs btn-flat delete_product_category " title="Delete"><i class="fa fa-trash"></i></a>
+                  <a href="javascript:void(0)" data-url="<?= base_url('product/create_product_category/' . $product['id']) ?>" class="btn btn-primary btn-sm btn-flat create_product_category"><i class="fa fa-pencil" title="Edit"></i></a>
+                  <a href="javascript:void(0)" data-url="<?= base_url('product/delete_product_category/'.$product['id']) ?>" class="btn btn-danger btn-sm btn-flat delete_product_category " title="Delete"><i class="fa fa-trash"></i></a>
 
                 </td>
               </tr>

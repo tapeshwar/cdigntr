@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?=base_url('assets/nestedSortable/jQuery-UI-v1.10.4.css')?>" />
     <link rel="stylesheet" href="<?=base_url('assets/nestedSortable/nestedSortable.css')?>" />
 
-
+    <link rel="stylesheet" href="<?=base_url('assets/jquery-confirm/jquery-confirm.css')?>" />
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/AdminLTE.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/skins/_all-skins.min.css') ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

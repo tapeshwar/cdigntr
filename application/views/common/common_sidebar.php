@@ -58,7 +58,7 @@ $method = $this->router->fetch_method();
           </ul>
         </li>
 
-        <li class="treeview <?=($class =='website' && $method=='index' || $method=='page' || $method=='slider' || $method=='gallery') ? 'active' : ''?>">
+        <li class="treeview <?=($class =='website' && $method=='index' || $method=='pages' || $method=='create_page' || $method=='slider' || $method=='gallery') ? 'active' : ''?>">
           <a href="#">
             <i class="fa fa-internet-explorer"></i> <span>Website</span>
             <span class="pull-right-container">
@@ -67,7 +67,7 @@ $method = $this->router->fetch_method();
           </a>
           <ul class="treeview-menu">
             <li class="<?=($class =='website' && $method=='index') ? 'active' : ''?>"><a href="<?=base_url('website/index')?>"><i class="fa fa-circle-o"></i> Menus</a></li>
-            <li class="<?=($class =='website' && $method=='page') ? 'active' : ''?>"><a href="<?=base_url('website/page')?>"><i class="fa fa-circle-o"></i> Pages</a></li>
+            <li class="<?=($class =='website' && $method=='pages' ||  $method=='create_page') ? 'active' : ''?>"><a href="<?=base_url('website/pages')?>"><i class="fa fa-circle-o"></i> Pages</a></li>
             <li class="<?=($class =='website' && $method=='slider') ? 'active' : ''?>"><a href="<?=base_url('website/slider')?>"><i class="fa fa-circle-o"></i> Sliders</a></li>
             <li class="<?=($class =='website' && $method=='gallery') ? 'active' : ''?>"><a href="<?=base_url('website/gallery')?>"><i class="fa fa-circle-o"></i> Gallery</a></li>
           </ul>
