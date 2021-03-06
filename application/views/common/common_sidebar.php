@@ -43,7 +43,7 @@ $method = $this->router->fetch_method();
             <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul> -->
         </li>
-
+        <li class="<?=($class =='projects' && $method=='index') ? 'active' : ''?>"><a href="<?=base_url('projects/index')?>"><i class="fa fa-circle-o"></i> Projects</a></li>
         <li class="treeview <?=($class =='product' && $method=='index' || $method=='create_product' || $method=='create_product_category' || $method=='product_categories') ? 'active' : ''?>">
           <a href="#">
             <i class="fa fa-shopping-cart"></i> <span> E-Commerce</span>

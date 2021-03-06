@@ -28,7 +28,7 @@
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
+    
         <header class="main-header">
 
             <!-- Logo -->
@@ -48,6 +48,11 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
+                    <?php if(isset($_SESSION['project_key'])){ ?>
+                    <li class="dropdown user user-menu"><a href="<?=base_url('projects/change_project')?>"><span class="hidden-xs">Change Project</span></a></li>
+                   
+                    <?php } ?>
+                   
                         <!-- Messages: style can be found in dropdown.less-->
                         <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -55,6 +60,7 @@
                                 <span class="label label-success">4</span>
                             </a>
                             <ul class="dropdown-menu">
+                            
                                 <li class="header">You have 4 messages</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
@@ -257,25 +263,25 @@
                                 <li class="user-header">
                                     <img src="<?= base_url('assets/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
                                     <!-- <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p> -->
+                                    Alexander Pierce - Web Developer
+                                    <small>Member since Nov. 2012</small>
+                                    </p> -->
                                 </li>
-                                <!-- Menu Body -->
-                                <!-- <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                
-              </li> -->
+                                    <!-- Menu Body -->
+                                    <!-- <li class="user-body">
+                                    <div class="row">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                    </div>
+                                    
+                                </li> -->
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">

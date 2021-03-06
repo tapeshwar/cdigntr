@@ -68,7 +68,7 @@
                 <td> <?= $page['enable'] ?></td>
                
                 <td>
-                  <a href="<?= base_url('website/create_page/' . $page['id']) ?>" class="btn btn-primary btn-sm btn-flat create_product_category"><i class="fa fa-pencil" title="Edit"></i></a>
+                  <a href="<?= base_url('website/create_page/' . $page['id']) ?>" class="btn btn-primary btn-sm btn-flat create_product_category"><i class="fa fa-edit" title="Edit"></i></a>
                   <a href="javascript:void(0)" data-url="<?= base_url('product/delete_page/'.$page['id']) ?>" class="btn btn-danger btn-sm btn-flat delete_page " title="Delete"><i class="fa fa-trash"></i></a>
 
                 </td>
