@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2021 at 05:32 AM
+-- Generation Time: Feb 13, 2021 at 01:30 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -223,22 +223,20 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `uid`, `project_key`, `menu_set`, `parent`, `title`, `heading`, `custom_link`, `open_in`, `s_no`, `enable`) VALUES
-(1, '9', '1161270535', '1', '8', 'About Basil', 'basil', '', 'SELF', 3, 'Y'),
-(2, '9', '1161270535', '1', '1', 'About Basil', 'basil2 ', '', 'SELF', 4, 'Y'),
-(3, '9', '1161270535', '2', '', 'OFFERSw', 'Offersw', 'ww', 'SELF', 1, 'Y'),
+(1, '9', '1161270535', '1', '', 'About Basil', 'basil', '', 'SELF', 10, 'Y'),
+(2, '9', '1161270535', '1', '1', 'About Basil', 'basil2 ', '', 'SELF', 11, 'Y'),
+(3, '9', '1161270535', '2', '', 'OFFERS', 'Offers', '', 'SELF', 0, 'Y'),
 (4, '9', '1183620902', '3', '', 'About Basil', 'basil', 'http://basildentalclinic.com/', 'SELF', 1, 'Y'),
 (5, '9', '1183620902', '3', '4', 'OFFERS', 'Offers', 'http://vidhsys.com/ss-set4-28.html', 'SELF', 2, 'Y'),
-(6, '9', '1161270535', '1', '12', 'sff1', 'sfaf1', '', 'SELF', 3, 'Y'),
-(7, '9', '1161270535', '1', '', 'twetwerw', 'ewrew', '', 'SELF', 1, 'Y'),
-(8, '9', '1161270535', '1', '7', 'yyytyt', 'rttrt', '', 'SELF', 2, 'Y'),
-(9, '9', '1161270535', '1', '', 'yuyuyy2', 'yuyuy2', '', 'SELF', 5, 'Y'),
-(10, '9', '1161270535', '1', '', 'hhghghg', 'hghghgh', '', 'SELF', 6, 'Y'),
-(19, '3', '1161270535', '7', '', 'fafa', 'sdfad', 'sdfs', 'SELF', 1, 'Y'),
-(12, '9', '1161270535', '1', '11', 'tertreerweq', 'erwwerweq', '', 'SELF', 2, 'Y'),
-(16, '3', '1161270535', '5', '', 'sda', 'sda', 'sda', 'SELF', 1, 'Y'),
-(14, '9', '1161270535', '1', '13', 'utytyrtyty', 'tytyt', '', 'SELF', 5, 'Y'),
-(15, '9', '1161270535', '2', '3', 'OFFERSee', 'Offersee', 'ee', 'SELF', 2, 'Y'),
-(18, '3', '1161270535', '6', '', 'SDFADF', 'SDA', 'SDAF', 'SELF', 0, 'Y');
+(6, '9', '1161270535', '1', '12', 'sff', 'sfaf', '', 'SELF', 5, 'Y'),
+(7, '9', '1161270535', '1', '', 'twetwerw', 'ewrew', '', 'SELF', 6, 'Y'),
+(8, '9', '1161270535', '1', '7', 'yyytyt', 'rttrt', '', 'SELF', 7, 'Y'),
+(9, '9', '1161270535', '1', '8', 'yuyuyy', 'yuyuy', '', 'SELF', 8, 'Y'),
+(10, '9', '1161270535', '1', '9', 'hhghghg', 'hghghgh', '', 'SELF', 9, 'Y'),
+(11, '9', '1161270535', '1', '', 'dfgdfsg', 'dfgdgds', '', 'SELF', 3, 'Y'),
+(12, '9', '1161270535', '1', '11', 'tertreerwe', 'erwwerwe', '', 'SELF', 4, 'Y'),
+(13, '9', '1161270535', '1', '', 'lkhkhjk', 'kjhkhjkjh', '', 'SELF', 1, 'Y'),
+(14, '9', '1161270535', '1', '13', 'utytyrtyty', 'tytyt', '', 'SELF', 2, 'Y');
 
 -- --------------------------------------------------------
 
@@ -261,9 +259,7 @@ CREATE TABLE `menu_set` (
 INSERT INTO `menu_set` (`id`, `uid`, `project_key`, `name`, `enable`) VALUES
 (1, '9', '1161270535', 'HEADERMENU', 'Yes'),
 (2, '9', '1161270535', 'FOOTERMENU', 'Yes'),
-(4, '9', '1183620902', 'HEADERMENU', 'Yes'),
-(5, '3', '1161270535', 'LeftMenu', 'Yes'),
-(6, '3', '1161270535', 'Right_menu', 'Yes');
+(3, '9', '1183620902', 'HEADERMENU', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -319,9 +315,7 @@ INSERT INTO `page` (`id`, `uid`, `project_key`, `title`, `keywords`, `descriptio
 (43, '', '', 'Contact Us', '', '', 'Contact Us', '', '<p>Contact Us</p>\r\n', 'No', '', 'No'),
 (44, '9', '1276864229', 'how i disable public holiday list array from 30 day of a month in php?', '', '', 'Book Party Hall', '', '&lt;p&gt;tresdf&lt;/p&gt;', 'No', '', 'Yes'),
 (45, '9', '1276864229', 'Dr Shilpis profile', '', '', 'Enquiry', '', '<p>lkjol</p>', 'No', '', 'Yes'),
-(46, '9', '1276864229', 'Dr Shilpis profilecvxc', '', '', 'Enquirycxvxccvxc', 'xcvxcvxcvxcv', '<p>lkjolxcvxcvxc</p>', 'No', '', 'No'),
-(47, '3', '1161270535', 'sdfad', '', '', 'sdfsd', '', '<p>sfsdf</p>\r\n', 'No', '', 'Yes'),
-(48, '3', '1161270535', 'dfsg', '', '', 'dfgsdg', '', '<p>dfsg fgfdg dfgfd</p>\r\n', 'No', '', 'Yes');
+(46, '9', '1276864229', 'Dr Shilpis profilecvxc', '', '', 'Enquirycxvxccvxc', 'xcvxcvxcvxcv', '<p>lkjolxcvxcvxc</p>', 'No', '', 'No');
 
 -- --------------------------------------------------------
 
@@ -455,9 +449,9 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`id`, `uid`, `package_id`, `project_key`, `name`, `domain`, `database_server`, `database_user`, `database_pwd`, `database_name`, `document_root`, `assigned_user`, `start_date`, `enable`) VALUES
-(10, '9', '', '1276864229', 'Weekend Film', 'http://weekendfilm.com', '', '', '', '', '', '15,9,3', '0000-00-00', 'Yes'),
-(11, '9', 'First option', '1183620902', 'vidhsystech', 'http://vidhsys.com', '', '', '', '', '', '9,3', '1970-01-01', 'Yes'),
-(13, '9', 'First option', '1161270535', 'EnglishGuroo', 'englishguroo.com', '', '', '', '', '', '16,9,3', '1970-01-01', 'Yes'),
+(10, '9', '', '1276864229', 'Weekend Film', 'http://weekendfilm.com', '', '', '', '', '', '15,9', '0000-00-00', 'Yes'),
+(11, '9', 'First option', '1183620902', 'vidhsystech', 'http://vidhsys.com', '', '', '', '', '', '9', '1970-01-01', 'Yes'),
+(13, '9', 'First option', '1161270535', 'EnglishGuroo', 'englishguroo.com', '', '', '', '', '', '16,9', '1970-01-01', 'Yes'),
 (14, '9', 'First option', '1026993136', 'test test', 'test.com', 'kshdnsa544', 'root', 'root', 'sample', '/public_html/vidhsys', '', '2018-06-24', 'Yes'),
 (15, '9', '', '1008259374', 'project name', 'http://eye360now.com', '', '', '', '', '', '', '2018-08-22', 'No'),
 (16, '9', '', '1388065438', 'vxvxcv', 'http://eye360now.com', 'xcvzxx', 'xcvx', 'xcvxcv', 'xcvxv', 'vxvczv', '', '2018-06-24', 'Yes');
@@ -950,13 +944,13 @@ ALTER TABLE `gallery_set`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `menu_set`
 --
 ALTER TABLE `menu_set`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `package`
@@ -968,7 +962,7 @@ ALTER TABLE `package`
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `products`
