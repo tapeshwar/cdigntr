@@ -38,7 +38,7 @@
 
 
     <div class="col-lg-12 mt20">
-  
+    <?= $this->paginator->dispaly_page_record_ipp() ?>
     <?php //echo $this->pagination->create_links(); ?>
       <table class="table table-responsive table-bordered">
         <thead>
@@ -81,8 +81,10 @@
 
         </tbody>
       </table>
-      <?php echo $this->pagination->create_links() ?>
-    
+      <?php //echo $this->pagination->create_links() ?>
+      <div class="box-footer clearfix">
+    <?= $this->paginator->display_jump_menu_pages() ?>
+</div>
 
     </div>
 
