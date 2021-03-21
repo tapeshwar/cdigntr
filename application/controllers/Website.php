@@ -198,7 +198,7 @@ class Website extends CORE_Controller {
 		$this->load->view('template/template_dashboard',array_merge($data,$this->assets));
     }
 
-    public function pages(){
+    public function pages($page=NULL){
         if(empty($this->session->userdata('id'))){
 			return redirect(base_url());
 		}
@@ -210,11 +210,11 @@ class Website extends CORE_Controller {
 		
 		$total_row = $this->website_model->get_data2($get,'count');
 
-		$config['base_url'] = base_url('website/pages');
+		/* $config['base_url'] = base_url('website/pages');
 		$config['total_rows'] = $total_row;
 		$config['per_page'] = 10;
 		$config['uri_segment'] = 3;
-		$config['reuse_query_string'] = TRUE;
+		$config['reuse_query_string'] = TRUE; */
 		//$config['use_page_numbers'] = TRUE;
 
         /* <ul class="pagination">
@@ -225,7 +225,7 @@ class Website extends CORE_Controller {
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul> */
 
-		$config['full_tag_open'] = "<ul class='pagination'>";
+		/* $config['full_tag_open'] = "<ul class='pagination'>";
 		$config['full_tag_close'] ="</ul>";
 		$config['num_tag_open'] = "<li class='page-item'><span class='page-link'>";
 		$config['num_tag_close'] = "</span></li>";
@@ -245,8 +245,22 @@ class Website extends CORE_Controller {
 		$this->pagination->initialize($config); 
 
 		$get['offset'] = $this->uri->segment(3);
-		$get['limit'] = $config['per_page'];
-		
+		$get['limit'] = $config['per_page']; */
+        
+        
+        $this->load->library('paginator');
+        //$this->items_per_page = 10;
+	    $this->paginator->initialize([
+	    'base_url' => base_url('website/pages'),
+	    'total_items' => $total_row,
+	    'current_page' => $page
+        ]);
+	    $get['limit'] = $this->paginator->limit_end; 
+        $get['offset'] = $this->paginator->limit_start;
+
+
+
+
 		$data = $this->website_model->get_data2($get,$count=NULL);
 		//pr($data);die;
 
