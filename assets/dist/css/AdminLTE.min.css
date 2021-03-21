@@ -5454,6 +5454,48 @@
 .mb-0 > a[aria-expanded="true"]:after {
     content: "\f077";
 }
+
+.paging_list .paginate:first-child, .paging_list .inactive:first-child {
+    border-left: 1px solid #ddd;
+}
+.paging_list .paginate,.paging_list .paginatecurrent {
+    border: 1px solid #ddd;
+    border-left: 0px;
+    padding: 8px; 
+}
+.paging_list .inactive {
+    background: #efefef none repeat scroll 0 0;
+    color: inherit;
+    cursor: default;
+    padding: 8px; 
+    border: 1px solid #ddd;
+    border-left: 0px;
+}
+
+.paging_list .paginatecurrent {
+    cursor: default;
+    background: #efefef none repeat scroll 0 0;
+}
+.paging_list a.paginate{
+    color: inherit;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea, select, .form-control {
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    display: block;
+    font-size: inherit;
+    height: 30px;
+    line-height: 20px;
+    max-width: 100%;
+    min-width: 0;
+    padding: 4px 5px;
+    vertical-align: middle;
+    width: 100%;
+    box-shadow: none;
+}
+
  @media print {
      .no-print,
      .main-sidebar,
